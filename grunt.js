@@ -141,11 +141,24 @@ module.exports = function(grunt) {
         p.stderr.pipe(process.stderr);
     });
 
+    grunt.registerTask('deployProduction', function() {
+        var request = require('request');
+        var exec = require('child_process').exec;
+        var done = this.async();
+
+        var p = exec('git subtree push --prefix bin/ production master', function() {
+            done();
+        });
+        p.stdout.pipe(process.stdout);
+        p.stderr.pipe(process.stderr);
+    });
+
 
 
 
 
     grunt.registerTask('default',  'bump clean:init copy:init copy:css cssmin clean:js copy:js exec:build clean:post commitBuild deployStage');
+    grunt.registerTask('production',  'deployProduction');
 
 
 
