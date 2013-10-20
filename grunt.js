@@ -129,9 +129,21 @@ module.exports = function(grunt) {
         });
     });
 
+    grunt.registerTask('deployStage', function() {
+        var request = require('request');
+        var exec = require('child_process').exec;
+        var done = this.async();
+
+        var p = exec('git subtree push --prefix bin/ heroku master', function() {
+            done();
+        });
+    });
 
 
-    grunt.registerTask('default',  'bump clean:init copy:init copy:css cssmin clean:js copy:js exec:build clean:post');
+
+
+
+    grunt.registerTask('default',  'bump clean:init copy:init copy:css cssmin clean:js copy:js exec:build clean:post commitBuild deployStage');
 
 
 
