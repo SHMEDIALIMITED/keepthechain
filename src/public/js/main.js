@@ -133,6 +133,18 @@ require([
             var drawCenter
             var startPos;
 
+            $(window).bind('scroll', function() {
+
+
+
+                if(delta > 0) {
+                    $('body').css('overflow', 'visible');
+                }
+                if($(window).scrollTop() + $(window).height() > $(document).height()) {
+                    $('body').css('overflow', 'hidden');
+                }
+            })
+
 
             $(window).bind('mousewheel', function(e) {
                 var w = $(window);
@@ -219,6 +231,9 @@ require([
                 var index = ~~(pos / 960);
                 pos -= ~~(delta)
                 //console.log(delta)
+
+                if(delta > 0) $('body').css('overflow', 'visible');
+
                 delta *= 0.9;
 
                 if(i != index) {

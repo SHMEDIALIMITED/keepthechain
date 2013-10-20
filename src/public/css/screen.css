@@ -1,3 +1,7 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 /* line 17, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -63,836 +67,483 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
   display: block;
 }
 
-/**
-* Fonts
-************************************************************************************************************************/
-@font-face {
-  font-family: "SangBleuBP";
-  src: url('/css/fonts/../font/SangBleuBP-Light.otf') format('opentype');
-  font-weight: light;
-}
-
-@font-face {
-  font-family: 'SangBleuBP';
-  src: url("font/SangBleuBP-Light.otf");
-  style: light;
-}
-
-/**
-* Layout
-************************************************************************************************************************/
-/* line 36, ../sass/screen.scss */
-article, aside, figure, footer, header, hgroup,
-menu, nav, section {
-  display: block;
-}
-
-/* line 38, ../sass/screen.scss */
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-/* line 43, ../sass/screen.scss */
-html, body, section, ol, li {
+/* line 12, ../sass/screen.scss */
+html, body {
+  width: 100%;
   height: 100%;
 }
 
-/* line 47, ../sass/screen.scss */
-body {
-  background: #fff;
-  font-family: 'Helvetica Neue';
-  color: #fff;
-  overflow: hidden;
-}
-
-/* line 53, ../sass/screen.scss */
-header, footer {
-  position: fixed;
-  width: 100%;
-  padding: 5px;
-  pointer-events: none;
-}
-
-/* line 60, ../sass/screen.scss */
-header {
-  top: 0px;
-  background: rgba(0, 0, 0, 0.1);
-  height: 50px;
-  z-index: 100;
-}
-
-/* line 67, ../sass/screen.scss */
+/* line 18, ../sass/screen.scss */
 footer {
-  bottom: 0px;
-  background: rgba(0, 0, 0, 0.1);
+  font-size: 8px;
 }
-
-/* line 72, ../sass/screen.scss */
-.page {
-  *zoom: 1;
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* line 38, ../../../../../../../../Library/Ruby/Gems/1.8/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
-.page:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/**
-* Preloader
-************************************************************************************************************************/
-/* line 80, ../sass/screen.scss */
-.loader {
-  width: 80px;
-  height: 80px;
-  background: url("../img/loader.gif");
-}
-
-/**
-* Portrait overlay
-************************************************************************************************************************/
-/* line 94, ../sass/screen.scss */
-.overlay {
-  width: 100%;
-  height: 150%;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  background: rgba(0, 0, 0, 0.9);
-  display: none;
-}
-/* line 103, ../sass/screen.scss */
-.overlay .hide {
-  display: none;
-}
-
-/**
-* Story Lock Overlay
-************************************************************************************************************************/
-/* line 118, ../sass/screen.scss */
-.story-lock {
-  position: absolute;
-  background: rgba(0, 0, 0, 0.8);
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-}
-/* line 125, ../sass/screen.scss */
-.story-lock .container {
-  position: relative;
-  top: 50%;
-  margin-top: -180px;
-  width: 100%;
-  height: 380px;
-}
-/* line 133, ../sass/screen.scss */
-.story-lock .container h1 {
-  width: 100%;
-  top: 30%;
-  text-align: center;
-  font-size: 100px;
-  background: rgba(0, 0, 0, 0.3);
-  pointer-events: none;
-}
-/* line 143, ../sass/screen.scss */
-.story-lock .container p {
-  width: 100%;
-  text-align: center;
-  padding: 0px 4em;
-  margin-top: 50px;
-}
-/* line 151, ../sass/screen.scss */
-.story-lock .container a {
-  margin-top: 20px;
-  display: block;
-  text-align: center;
-}
-
-/**
-* Development Only
-************************************************************************************************************************/
-/* line 163, ../sass/screen.scss */
-.i {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  background: url("../img/i.png") no-repeat;
-  width: 20px;
-  height: 20px;
-}
-
-/**
-* Stories
-************************************************************************************************************************/
-/* line 178, ../sass/screen.scss */
-.story {
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  position: relative;
-  overflow: hidden;
-  background-position: right bottom;
-  background-size: cover;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
-}
-
-/**
-*
-*   Money Plant Story Sass
-*
-*/
-/**
-* Animations
-***********************************************************************************************************************/
-@-webkit-keyframes slidePrimary {
-  /* line 17, ../sass/stories/_money-plant.scss */
-  100% {
-    -webkit-transform: translateX(-1920px);
-    -moz-transform: translateX(-1920px);
-    -ms-transform: translateX(-1920px);
-    -o-transform: translateX(-1920px);
-    transform: translateX(-1920px);
-  }
-}
-
-@-webkit-keyframes slideSecondary {
-  /* line 23, ../sass/stories/_money-plant.scss */
-  100% {
-    -webkit-transform: translateX(0px);
-    -moz-transform: translateX(0px);
-    -ms-transform: translateX(0px);
-    -o-transform: translateX(0px);
-    transform: translateX(0px);
-  }
-}
-
-@-webkit-keyframes parallax-animation {
-  /* line 29, ../sass/stories/_money-plant.scss */
-  100% {
-    -webkit-transform: translateX(100px);
-    -moz-transform: translateX(100px);
-    -ms-transform: translateX(100px);
-    -o-transform: translateX(100px);
-    transform: translateX(100px);
-  }
-}
-
-@-webkit-keyframes plant-animation {
-  /* line 35, ../sass/stories/_money-plant.scss */
-  50% {
-    -webkit-transform: scaleY(0.99);
-    -moz-transform: scaleY(0.99);
-    -ms-transform: scaleY(0.99);
-    -o-transform: scaleY(0.99);
-    transform: scaleY(0.99);
-  }
-}
-
-@-webkit-keyframes plant3-animation {
-  /* line 41, ../sass/stories/_money-plant.scss */
-  50% {
-    -webkit-transform: scaleX(0.99);
-    -moz-transform: scaleX(0.99);
-    -ms-transform: scaleX(0.99);
-    -o-transform: scaleX(0.99);
-    transform: scaleX(0.99);
-  }
-
-  /* line 45, ../sass/stories/_money-plant.scss */
-  70% {
-    -webkit-transform: scaleY(0.99);
-    -moz-transform: scaleY(0.99);
-    -ms-transform: scaleY(0.99);
-    -o-transform: scaleY(0.99);
-    transform: scaleY(0.99);
-  }
-}
-
-@-webkit-keyframes plant4-animation {
-  /* line 51, ../sass/stories/_money-plant.scss */
-  50% {
-    -webkit-transform: scale(0.98, 0.98);
-    -moz-transform: scale(0.98, 0.98);
-    -ms-transform: scale(0.98, 0.98);
-    -o-transform: scale(0.98, 0.98);
-    transform: scale(0.98, 0.98);
-  }
-}
-
-@-webkit-keyframes butterfly1-sheet {
-  /* line 57, ../sass/stories/_money-plant.scss */
-  from {
-    background-position-y: 0px;
-  }
-
-  /* line 58, ../sass/stories/_money-plant.scss */
-  to {
-    background-position-y: -990px;
-  }
-}
-
-/* line 65, ../sass/stories/_money-plant.scss */
-.money-plant {
-  /**
-  * Styling
-  ************************************************************************************************************************/
-}
-/* line 67, ../sass/stories/_money-plant.scss */
-.money-plant .primary.trans {
-  -webkit-transition: -webkit-transform 4s cubic-bezier(0.42, 0, 0.58, 1);
-  -webkit-transition-delay: 0;
-  -moz-transition: -moz-transform 4s cubic-bezier(0.42, 0, 0.58, 1) 0;
-  -o-transition: -o-transform 4s cubic-bezier(0.42, 0, 0.58, 1) 0;
-  transition: transform 4s cubic-bezier(0.42, 0, 0.58, 1) 0;
-}
-/* line 71, ../sass/stories/_money-plant.scss */
-.money-plant .secondary.trans {
-  -webkit-transition: -webkit-transform 4s cubic-bezier(0.42, 0, 0.58, 1);
-  -webkit-transition-delay: 0;
-  -moz-transition: -moz-transform 4s cubic-bezier(0.42, 0, 0.58, 1) 0;
-  -o-transition: -o-transform 4s cubic-bezier(0.42, 0, 0.58, 1) 0;
-  transition: transform 4s cubic-bezier(0.42, 0, 0.58, 1) 0;
-}
-/* line 79, ../sass/stories/_money-plant.scss */
-.money-plant .plant1.animation {
-  -webkit-animation: plant-animation 5s ease infinite;
-}
-/* line 83, ../sass/stories/_money-plant.scss */
-.money-plant .plant2.animation {
-  -webkit-animation: plant-animation 7s ease infinite;
-}
-/* line 87, ../sass/stories/_money-plant.scss */
-.money-plant .plant3.animation {
-  -webkit-animation: plant3-animation 10s ease infinite;
-}
-/* line 91, ../sass/stories/_money-plant.scss */
-.money-plant .plant4.animation {
-  -webkit-animation: plant4-animation 10s ease infinite;
-}
-/* line 95, ../sass/stories/_money-plant.scss */
-.money-plant .butterfly.sheet {
-  -webkit-animation: butterfly1-sheet 0.8s steps(15);
-}
-/* line 103, ../sass/stories/_money-plant.scss */
-.money-plant .loader {
-  margin: 300px auto;
-}
-/* line 107, ../sass/stories/_money-plant.scss */
-.money-plant .primary {
-  background: url("../img/high/money-plant/poster.jpg") no-repeat;
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  background-position: right bottom;
-  background-size: cover;
-  -webkit-transform: translateX(0px);
-  -moz-transform: translateX(0px);
-  -ms-transform: translateX(0px);
-  -o-transform: translateX(0px);
-  transform: translateX(0px);
-}
-/* line 119, ../sass/stories/_money-plant.scss */
-.money-plant .primary .drop {
-  background-color: lightblue;
-  width: 10px;
-  height: 10px;
-  -webkit-border-top-left-radius: 0;
-  -webkit-border-top-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -webkit-border-bottom-left-radius: 5px;
-  -webkit-transform: rotate(45deg);
-  box-shadow: 1px 1px 7px #1a1a1a;
-}
-/* line 132, ../sass/stories/_money-plant.scss */
-.money-plant .primary .plant-hit {
-  width: 150px;
-  height: 150px;
-  background: rgba(0, 0, 0, 0.2);
-  position: absolute;
-  bottom: 0px;
-  right: 0px;
-}
-/* line 144, ../sass/stories/_money-plant.scss */
-.money-plant .secondary {
-  position: absolute;
-  right: 0px;
-  bottom: 0px;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  background-position: left bottom;
-  -webkit-transform: translateX(1920px);
-  -moz-transform: translateX(1920px);
-  -ms-transform: translateX(1920px);
-  -o-transform: translateX(1920px);
-  transform: translateX(1920px);
-  background-size: cover;
-}
-/* line 158, ../sass/stories/_money-plant.scss */
-.money-plant .secondary .parallax {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  background-position: left bottom;
-  background-size: cover;
-}
-/* line 167, ../sass/stories/_money-plant.scss */
-.money-plant .secondary .plants {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  background-repeat: no-repeat;
-  background-position: top left;
-  background-size: cover;
-}
-/* line 176, ../sass/stories/_money-plant.scss */
-.money-plant .secondary .plants .css-stage {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  background: rgba(255, 0, 0, 0.2);
-}
-/* line 184, ../sass/stories/_money-plant.scss */
-.money-plant .secondary .plants .css-stage .butterfly {
-  position: absolute;
-  width: 60px;
-  height: 66px;
-  left: 856px;
-  top: 669px;
-  background-size: cover;
-  -webkit-animation: butterfly1-sheet 0.8s steps(15) infinite;
-}
-/* line 198, ../sass/stories/_money-plant.scss */
-.money-plant .secondary .plant1 {
-  position: absolute;
-  width: 768px;
-  height: 546px;
-  background-size: cover;
-  -webkit-transform-origin: 50% 100%;
-  -moz-transform-origin: 50% 100%;
-  -ms-transform-origin: 50% 100%;
-  -o-transform-origin: 50% 100%;
-  transform-origin: 50% 100%;
-}
-/* line 206, ../sass/stories/_money-plant.scss */
-.money-plant .secondary .plant2 {
-  position: absolute;
-  width: 1007px;
-  height: 596px;
-  background-size: cover;
-  -webkit-transform-origin: 55% 100%;
-  -moz-transform-origin: 55% 100%;
-  -ms-transform-origin: 55% 100%;
-  -o-transform-origin: 55% 100%;
-  transform-origin: 55% 100%;
-}
-/* line 215, ../sass/stories/_money-plant.scss */
-.money-plant .secondary .plant3 {
-  position: absolute;
-  width: 512px;
-  height: 596px;
-  background-size: cover;
-  -webkit-transform-origin: 100% 100%;
-  -moz-transform-origin: 100% 100%;
-  -ms-transform-origin: 100% 100%;
-  -o-transform-origin: 100% 100%;
-  transform-origin: 100% 100%;
-}
-/* line 223, ../sass/stories/_money-plant.scss */
-.money-plant .secondary .plant4 {
-  position: absolute;
-  width: 245px;
-  height: 295px;
-  background-size: cover;
-  -webkit-transform-origin: 50% 100%;
-  -moz-transform-origin: 50% 100%;
-  -ms-transform-origin: 50% 100%;
-  -o-transform-origin: 50% 100%;
-  transform-origin: 50% 100%;
-}
-/* line 232, ../sass/stories/_money-plant.scss */
-.money-plant .secondary .hedge {
-  position: absolute;
-  width: 746px;
-  height: 328px;
-  background-size: cover;
-}
-/* line 239, ../sass/stories/_money-plant.scss */
-.money-plant .secondary .butterfly1 {
-  position: absolute;
-  width: 60px;
-  height: 66px;
-  background-size: cover;
-}
-
-@-webkit-keyframes right-sheet {
-  /* line 2, ../sass/stories/_stairs.scss */
-  from {
-    background-position-x: 0px;
-  }
-
-  /* line 3, ../sass/stories/_stairs.scss */
-  to {
-    background-position-x: -1865px;
-  }
-}
-
-/* line 7, ../sass/stories/_stairs.scss */
-.stairs {
-  background-image: url("../img/high/stairs/poster.jpg");
-  background-position: bottom center;
-  background-size: cover;
-  -webkit-transition: background-image 0.5s ease-in-out;
-  -moz-transition: background-image 0.5s ease-in-out;
-  -o-transition: background-image 0.5s ease-in-out;
-  transition: background-image 0.5s ease-in-out;
-}
-/* line 19, ../sass/stories/_stairs.scss */
-.stairs .right.trans {
-  -webkit-transition: -webkit-transform 0.5s linear;
-  -webkit-transition-delay: 0;
-  -moz-transition: -moz-transform 0.5s linear 0;
-  -o-transition: -o-transform 0.5s linear 0;
-  transition: transform 0.5s linear 0;
-}
-/* line 32, ../sass/stories/_stairs.scss */
-.stairs .left {
-  position: absolute;
-  left: 50%;
-  top: 0%;
-  width: 353px;
-  height: 669px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left bottom;
-}
-/* line 43, ../sass/stories/_stairs.scss */
-.stairs .right {
-  position: absolute;
-  left: 30%;
-  top: -90px;
-  width: 373px;
-  height: 594px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: left bottom;
-}
-
-/* line 1, ../sass/stories/_tar-road.scss */
-.tar-road {
-  background: url("../img/high/tar-road/poster.jpg");
-  background-position: top center;
-  height: 300%;
-}
-/* line 8, ../sass/stories/_tar-road.scss */
-.tar-road h1 {
-  position: fixed;
-  top: 20%;
-  width: 100%;
-  text-align: center;
-  font-size: 100px;
-  background: rgba(0, 0, 0, 0.3);
-  opacity: 0;
-  pointer-events: none;
-}
-/* line 19, ../sass/stories/_tar-road.scss */
-.tar-road .left {
-  width: 49.15254%;
-  float: left;
-  margin-right: 1.69492%;
-  display: inline;
-  height: 100%;
-}
-/* line 26, ../sass/stories/_tar-road.scss */
-.tar-road .right {
-  width: 49.15254%;
+/* line 20, ../sass/screen.scss */
+footer p {
   float: right;
-  margin-right: 0;
-  *margin-left: -1em;
-  display: inline;
+  padding-top: 10px;
+  padding-right: 10px;
+}
+/* line 25, ../sass/screen.scss */
+footer #license {
+  font-size: 7px;
+}
+
+/* line 31, ../sass/screen.scss */
+h1 {
+  width: 70%;
   height: 100%;
-}
-
-/* line 1, ../sass/stories/_please-adjust.scss */
-.please-adjust {
-  background: url("../img/high/money-plant/poster.jpg");
-  background-size: cover;
-}
-
-/* line 1, ../sass/stories/_total-eclipse.scss */
-.total-eclipse {
-  background-size: cover;
-  background-position: top left;
-  background-image: url("../img/high/total-eclipse/poster.jpg");
-}
-/* line 6, ../sass/stories/_total-eclipse.scss */
-.total-eclipse .bg {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  min-height: 100%;
-  background-size: cover;
-  background-position: top left;
-}
-/* line 15, ../sass/stories/_total-eclipse.scss */
-.total-eclipse .bg.trans {
-  -webkit-transition: background-image 1s ease-in-out;
-  -moz-transition: background-image 1s ease-in-out;
-  -o-transition: background-image 1s ease-in-out;
-  transition: background-image 1s ease-in-out;
-}
-/* line 19, ../sass/stories/_total-eclipse.scss */
-.total-eclipse .resizer {
-  position: absolute;
-  width: 424px;
-  height: 739px;
-  border: 10px solid #000000;
-  background: #006169;
-}
-
-/* line 1, ../sass/stories/_bathroom.scss */
-.bathroom {
-  background-size: cover;
-  background-position: top left;
-  background-image: url("../img/high/bathroom/poster.jpg");
-}
-/* line 6, ../sass/stories/_bathroom.scss */
-.bathroom .smoke {
-  position: absolute;
-  width: 700px;
-  height: 250px;
-  background: url("../img/high/bathroom/smoke.png") no-repeat;
+  background-image: url("../img/logo.svg");
+  background-repeat: no-repeat;
   background-size: contain;
-  bottom: 32%;
-  margin-left: 18%;
-  -webkit-transform: rotate(-15deg);
-  -moz-transform: rotate(-15deg);
-  -ms-transform: rotate(-15deg);
-  -o-transform: rotate(-15deg);
-  transform: rotate(-15deg);
-}
-/* line 17, ../sass/stories/_bathroom.scss */
-.bathroom .glass {
-  position: absolute;
-  width: 547px;
-  height: 654px;
-  left: 45.98958333333333%;
-  background: url("../img/high/bathroom/glass.png") no-repeat;
-  background-size: cover;
-  opacity: 0;
-  -webkit-transition: opacity 10s linear;
-  -webkit-transition-delay: 0;
-  -moz-transition: opacity 10s linear 0;
-  -o-transition: opacity 10s linear 0;
-  transition: opacity 10s linear 0;
-}
-/* line 28, ../sass/stories/_bathroom.scss */
-.bathroom .glass.steam {
-  opacity: 1;
-}
-/* line 32, ../sass/stories/_bathroom.scss */
-.bathroom .glass-mask {
-  position: absolute;
-  width: 547px;
-  height: 654px;
-  left: 45.98958333333333%;
-}
-/* line 39, ../sass/stories/_bathroom.scss */
-.bathroom .mask {
-  -webkit-mask: url(#mask);
+  margin: 0px auto;
+  text-indent: -9999px;
+  background-position: 20% 45%;
 }
 
-/* line 1, ../sass/stories/_dust.scss */
-.dust {
-  background-image: url("../img/high/dust/poster.jpg");
-  background-size: cover;
-  background-position: center;
-  color: #000;
-}
-/* line 8, ../sass/stories/_dust.scss */
-.dust h1 {
-  width: 800px;
-  position: relative;
-  top: 20%;
-  left: 50%;
-  margin-left: -400px;
-  font-family: SangBleuBP;
-  font-style: light;
-  font-size: 70px;
-}
-/* line 20, ../sass/stories/_dust.scss */
-.dust canvas {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 100000;
-}
-/* line 27, ../sass/stories/_dust.scss */
-.dust .css-stage {
-  position: absolute;
-  top: 0%;
-  left: 0%;
+/* line 42, ../sass/screen.scss */
+svg {
   width: 100%;
   height: 100%;
 }
-/* line 35, ../sass/stories/_dust.scss */
-.dust .css-stage .tile {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 20px;
-  height: 20px;
-  background: url("../img/high/dust/vectors.png");
-}
-/* line 46, ../sass/stories/_dust.scss */
-.dust .css-stage .tile-1 {
-  background-position: 0px 0px;
-}
-/* line 50, ../sass/stories/_dust.scss */
-.dust .css-stage .tile-2 {
-  background-position: -20px 0px;
-}
-/* line 54, ../sass/stories/_dust.scss */
-.dust .css-stage .tile-3 {
-  background-position: -40px 0px;
-}
-/* line 58, ../sass/stories/_dust.scss */
-.dust .css-stage .tile-4 {
-  background-position: -60px 0px;
-}
-/* line 62, ../sass/stories/_dust.scss */
-.dust .css-stage .tile-5 {
-  background-position: -80px 0px;
-}
-/* line 66, ../sass/stories/_dust.scss */
-.dust .css-stage .tile-6 {
-  background-position: -100px 0px;
-}
-/* line 70, ../sass/stories/_dust.scss */
-.dust .css-stage .tile-7 {
-  background-position: -120px 0px;
-}
-/* line 74, ../sass/stories/_dust.scss */
-.dust .css-stage .tile-8 {
-  background-position: -140px 0px;
-}
-/* line 78, ../sass/stories/_dust.scss */
-.dust .css-stage .tile-9 {
-  background-position: -160px 0px;
-}
-/* line 82, ../sass/stories/_dust.scss */
-.dust .css-stage .sprite {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  color: #000;
-  font-size: 70px;
-  font-family: SangBleuBP;
-}
-/* line 92, ../sass/stories/_dust.scss */
-.dust .css-stage .container {
-  position: absolute;
-  background: rgba(255, 255, 0, 0.4);
-  height: 100px;
-  width: 100px;
+
+@-o-keyframes upper-jaw-animation {
+  /* line 50, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 53, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+  }
 }
 
-/* line 1, ../sass/stories/_interiors-puzzle.scss */
-.interiors-puzzle {
-  height: 500%;
-  background-image: url("../img/high/interiors-puzzle/poster.jpg");
-  background-size: cover;
-  background-position: center;
-}
-/* line 9, ../sass/stories/_interiors-puzzle.scss */
-.interiors-puzzle .stage {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  background: rgba(255, 0, 0, 0.1);
-  border: 2px dotted #000;
-  display: none;
-}
-/* line 19, ../sass/stories/_interiors-puzzle.scss */
-.interiors-puzzle .stage div {
-  position: absolute;
-}
-/* line 24, ../sass/stories/_interiors-puzzle.scss */
-.interiors-puzzle .stage .room {
-  background: rgba(255, 255, 255, 0.6);
-  border: #000 solid 5px;
-  width: 800px;
-  height: 500px;
-  left: -400px;
-  top: -250px;
-  -webkit-transform: translate(0px, 0px);
-  -moz-transform: translate(0px, 0px);
-  -ms-transform: translate(0px, 0px);
-  -o-transform: translate(0px, 0px);
-  transform: translate(0px, 0px);
-}
-/* line 38, ../sass/stories/_interiors-puzzle.scss */
-.interiors-puzzle .stage .bed {
-  background: #006169;
-  left: -150px;
-  top: -200px;
-  width: 300px;
-  height: 400px;
-  -webkit-transform: translate(-240px, -40px);
-  -moz-transform: translate(-240px, -40px);
-  -ms-transform: translate(-240px, -40px);
-  -o-transform: translate(-240px, -40px);
-  transform: translate(-240px, -40px);
-}
-/* line 51, ../sass/stories/_interiors-puzzle.scss */
-.interiors-puzzle .stage .table {
-  background: #ff0000;
-  left: -100px;
-  top: -100px;
-  width: 200px;
-  height: 200px;
-  -webkit-transform: translate(120px, -130px);
-  -moz-transform: translate(120px, -130px);
-  -ms-transform: translate(120px, -130px);
-  -o-transform: translate(120px, -130px);
-  transform: translate(120px, -130px);
-}
-/* line 64, ../sass/stories/_interiors-puzzle.scss */
-.interiors-puzzle .stage .wardrobe {
-  background: #ff8000;
-  left: -150px;
-  top: -100px;
-  width: 300px;
-  height: 200px;
-  -webkit-transform: translate(240px, 140px);
-  -moz-transform: translate(240px, 140px);
-  -ms-transform: translate(240px, 140px);
-  -o-transform: translate(240px, 140px);
-  transform: translate(240px, 140px);
+@-moz-keyframes upper-jaw-animation {
+  /* line 50, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 53, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+  }
 }
 
-/* line 1, ../sass/stories/_social-life.scss */
-.social-life {
-  background-image: url("../img/high/social-life/poster.jpg");
-  background-size: cover;
-  background-position: center;
+@-webkit-keyframes upper-jaw-animation {
+  /* line 50, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 53, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+  }
 }
-/* line 7, ../sass/stories/_social-life.scss */
-.social-life video {
-  width: 100%;
-  height: 100%;
+
+@-ms-keyframes upper-jaw-animation {
+  /* line 50, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 53, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+  }
+}
+
+@-keyframes upper-jaw-animation {
+  /* line 50, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 53, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(-30deg);
+    -moz-transform: rotate(-30deg);
+    -ms-transform: rotate(-30deg);
+    -o-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+  }
+}
+
+@-o-keyframes lower-jaw-animation {
+  /* line 59, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 62, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+  }
+}
+
+@-moz-keyframes lower-jaw-animation {
+  /* line 59, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 62, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+  }
+}
+
+@-webkit-keyframes lower-jaw-animation {
+  /* line 59, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 62, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+  }
+}
+
+@-ms-keyframes lower-jaw-animation {
+  /* line 59, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 62, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+  }
+}
+
+@-keyframes lower-jaw-animation {
+  /* line 59, ../sass/screen.scss */
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+
+  /* line 62, ../sass/screen.scss */
+  100% {
+    -webkit-transform: rotate(20deg);
+    -moz-transform: rotate(20deg);
+    -ms-transform: rotate(20deg);
+    -o-transform: rotate(20deg);
+    transform: rotate(20deg);
+  }
+}
+
+@-o-keyframes attack {
+  /* line 68, ../sass/screen.scss */
+  0% {
+    -webkit-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -moz-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -ms-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -o-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+  }
+
+  /* line 72, ../sass/screen.scss */
+  100% {
+    -webkit-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -moz-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -ms-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -o-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+  }
+}
+
+@-moz-keyframes attack {
+  /* line 68, ../sass/screen.scss */
+  0% {
+    -webkit-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -moz-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -ms-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -o-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+  }
+
+  /* line 72, ../sass/screen.scss */
+  100% {
+    -webkit-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -moz-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -ms-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -o-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+  }
+}
+
+@-webkit-keyframes attack {
+  /* line 68, ../sass/screen.scss */
+  0% {
+    -webkit-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -moz-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -ms-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -o-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+  }
+
+  /* line 72, ../sass/screen.scss */
+  100% {
+    -webkit-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -moz-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -ms-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -o-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+  }
+}
+
+@-ms-keyframes attack {
+  /* line 68, ../sass/screen.scss */
+  0% {
+    -webkit-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -moz-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -ms-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -o-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+  }
+
+  /* line 72, ../sass/screen.scss */
+  100% {
+    -webkit-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -moz-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -ms-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -o-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+  }
+}
+
+@-keyframes attack {
+  /* line 68, ../sass/screen.scss */
+  0% {
+    -webkit-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -moz-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -ms-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    -o-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+    transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
+  }
+
+  /* line 72, ../sass/screen.scss */
+  100% {
+    -webkit-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -moz-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -ms-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    -o-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+    transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
+  }
+}
+
+@-o-keyframes shrink {
+  /* line 78, ../sass/screen.scss */
+  0% {
+    -webkit-transform: scale3d(2, 2, 1);
+    -moz-transform: scale3d(2, 2, 1);
+    -ms-transform: scale3d(2, 2, 1);
+    -o-transform: scale3d(2, 2, 1);
+    transform: scale3d(2, 2, 1);
+  }
+
+  /* line 82, ../sass/screen.scss */
+  100% {
+    -webkit-transform: scale3d(0.2, 0.2, 1);
+    -moz-transform: scale3d(0.2, 0.2, 1);
+    -ms-transform: scale3d(0.2, 0.2, 1);
+    -o-transform: scale3d(0.2, 0.2, 1);
+    transform: scale3d(0.2, 0.2, 1);
+  }
+}
+
+@-moz-keyframes shrink {
+  /* line 78, ../sass/screen.scss */
+  0% {
+    -webkit-transform: scale3d(2, 2, 1);
+    -moz-transform: scale3d(2, 2, 1);
+    -ms-transform: scale3d(2, 2, 1);
+    -o-transform: scale3d(2, 2, 1);
+    transform: scale3d(2, 2, 1);
+  }
+
+  /* line 82, ../sass/screen.scss */
+  100% {
+    -webkit-transform: scale3d(0.2, 0.2, 1);
+    -moz-transform: scale3d(0.2, 0.2, 1);
+    -ms-transform: scale3d(0.2, 0.2, 1);
+    -o-transform: scale3d(0.2, 0.2, 1);
+    transform: scale3d(0.2, 0.2, 1);
+  }
+}
+
+@-webkit-keyframes shrink {
+  /* line 78, ../sass/screen.scss */
+  0% {
+    -webkit-transform: scale3d(2, 2, 1);
+    -moz-transform: scale3d(2, 2, 1);
+    -ms-transform: scale3d(2, 2, 1);
+    -o-transform: scale3d(2, 2, 1);
+    transform: scale3d(2, 2, 1);
+  }
+
+  /* line 82, ../sass/screen.scss */
+  100% {
+    -webkit-transform: scale3d(0.2, 0.2, 1);
+    -moz-transform: scale3d(0.2, 0.2, 1);
+    -ms-transform: scale3d(0.2, 0.2, 1);
+    -o-transform: scale3d(0.2, 0.2, 1);
+    transform: scale3d(0.2, 0.2, 1);
+  }
+}
+
+@-ms-keyframes shrink {
+  /* line 78, ../sass/screen.scss */
+  0% {
+    -webkit-transform: scale3d(2, 2, 1);
+    -moz-transform: scale3d(2, 2, 1);
+    -ms-transform: scale3d(2, 2, 1);
+    -o-transform: scale3d(2, 2, 1);
+    transform: scale3d(2, 2, 1);
+  }
+
+  /* line 82, ../sass/screen.scss */
+  100% {
+    -webkit-transform: scale3d(0.2, 0.2, 1);
+    -moz-transform: scale3d(0.2, 0.2, 1);
+    -ms-transform: scale3d(0.2, 0.2, 1);
+    -o-transform: scale3d(0.2, 0.2, 1);
+    transform: scale3d(0.2, 0.2, 1);
+  }
+}
+
+@-keyframes shrink {
+  /* line 78, ../sass/screen.scss */
+  0% {
+    -webkit-transform: scale3d(2, 2, 1);
+    -moz-transform: scale3d(2, 2, 1);
+    -ms-transform: scale3d(2, 2, 1);
+    -o-transform: scale3d(2, 2, 1);
+    transform: scale3d(2, 2, 1);
+  }
+
+  /* line 82, ../sass/screen.scss */
+  100% {
+    -webkit-transform: scale3d(0.2, 0.2, 1);
+    -moz-transform: scale3d(0.2, 0.2, 1);
+    -ms-transform: scale3d(0.2, 0.2, 1);
+    -o-transform: scale3d(0.2, 0.2, 1);
+    transform: scale3d(0.2, 0.2, 1);
+  }
+}
+
+/* line 88, ../sass/screen.scss */
+.attack {
+  -o-animation: attack 0.5s ease-in;
+  -moz-animation: attack 0.5s ease-in;
+  -webkit-animation: attack 0.5s ease-in;
+  -ms-animation: attack 0.5s ease-in;
+  animation: attack 0.5s ease-in;
+}
+
+/* line 92, ../sass/screen.scss */
+.shrink {
+  -o-animation: shrink 0.5s ease-in;
+  -moz-animation: shrink 0.5s ease-in;
+  -webkit-animation: shrink 0.5s ease-in;
+  -ms-animation: shrink 0.5s ease-in;
+  animation: shrink 0.5s ease-in;
+}
+
+/* line 96, ../sass/screen.scss */
+.upper {
+  -o-animation: upper-jaw-animation 1s ease-out infinite;
+  -moz-animation: upper-jaw-animation 1s ease-out infinite;
+  -webkit-animation: upper-jaw-animation 1s ease-out infinite;
+  -ms-animation: upper-jaw-animation 1s ease-out infinite;
+  animation: upper-jaw-animation 1s ease-out infinite;
+}
+
+/* line 102, ../sass/screen.scss */
+.lower {
+  -webkit-transform-origin: 430px 200px;
+  -o-animation: lower-jaw-animation 1s ease-out infinite;
+  -moz-animation: lower-jaw-animation 1s ease-out infinite;
+  -webkit-animation: lower-jaw-animation 1s ease-out infinite;
+  -ms-animation: lower-jaw-animation 1s ease-out infinite;
+  animation: lower-jaw-animation 1s ease-out infinite;
+}
+
+/* line 107, ../sass/screen.scss */
+.unit {
+  position: absolute;
 }

@@ -12,7 +12,31 @@
 html, body {
     width: 100%;
     height: 100%;
-    overflow: hidden;
+   //overflow: hidden;
+}
+
+footer {
+    font-size: 8px;
+    p {
+        float: right;
+        padding-top: 10px;
+        padding-right: 10px;
+    }
+    #license {
+        font-size: 7px;
+    }
+}
+
+
+h1 {
+    width: 70%;
+    height: 100%;
+    background-image: url('../img/logo.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0px auto;
+    text-indent: -9999px;
+    background-position: 20% 45%;
 }
 
 svg {
