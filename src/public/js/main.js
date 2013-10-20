@@ -1,3 +1,10 @@
+/**
+ *  Copyright Reserved SH MEDIA LIMITED
+ *  Author: Patrick Wolleb, patrick.wolleb@shmedia.co.uk
+ *  Licensed under Creative Commons
+ *  http://creativecommons.org/licenses/by-nc-nd/2.0/uk/deed.en_US
+ */
+
 require.config({
 	'paths': {
 		'jquery': 'libs/jquery-1.8.3.min',
@@ -133,14 +140,19 @@ require([
             var drawCenter
             var startPos;
 
+            $('nav a.info-btn').bind('mouseover', function() {
+                $('#info').show().css('opacity', 1);
+            });
+
             $(window).bind('scroll', function() {
 
 
 
-                if(delta > 0) {
-                    $('body').css('overflow', 'visible');
-                }
+
+
                 if($(window).scrollTop() + $(window).height() > $(document).height()) {
+
+                    $('nav').show();
                     $('body').css('overflow', 'hidden');
                 }
             })
@@ -232,7 +244,11 @@ require([
                 pos -= ~~(delta)
                 //console.log(delta)
 
-                if(delta > 0) $('body').css('overflow', 'visible');
+                if(delta > 0) {
+                    $('nav').hide();
+                    $('#info').hide().css('opacity', 0);
+                    $('body').css('overflow', 'visible');
+                }
 
                 delta *= 0.9;
 

@@ -1,0 +1,31 @@
+.btn {
+    background-color: $pink-dark;
+    cursor: pointer;
+    @include transition(background-color 0.5s);
+}
+
+.btn:hover {
+    background-color: $pink-light;
+}
+
+.icon-btn {
+    @extend .btn;
+    display: block;
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 40px;
+    height: 40px;
+    text-indent: -9999px;
+}
+
+.plus-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/plus.svg');
+}
+
+.info-btn {
+    @extend .icon-btn;
+    background-size: 70%;
+    background-image: url('../img/icons/info.svg');
+}
