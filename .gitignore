@@ -1,0 +1,6 @@
+src/node_modules
+src/public/.sass-cache
+design/supplied/
+.idea
+.DS_Store
+server.pem

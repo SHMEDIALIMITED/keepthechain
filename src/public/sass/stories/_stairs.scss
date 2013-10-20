@@ -1,0 +1,54 @@
+@-webkit-keyframes right-sheet {
+  from { background-position-x: 0px; }
+  to { background-position-x: -1865px; }
+}
+
+
+.stairs {
+
+
+
+  .right.sheet {
+   // -webkit-animation: right-sheet 0.4s steps(5) forwards ;
+  }
+
+  .right.sheet-rev {
+   // -webkit-animation: right-sheet 0.4s steps(5) reverse;
+  }
+
+  .right.trans {
+    @include single-transition(transform, 0.5s, linear, 0);
+  }
+
+
+  background-image: url('../img/high/stairs/poster.jpg');
+  background-position: bottom center;
+  background-size: cover;
+  @include single-transition(background-image, 0.5s, ease-in-out);
+  //@include user-select(none);
+  //@include backface-visibility(hidden);
+  //@include transform-style();
+
+  .left {
+    position:absolute;
+    left: 50%;
+    top:0%;
+    width: 353px;
+    height: 669px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+  }
+
+  .right {
+    position:absolute;
+    left: 30%;
+    top:-90px;
+    width: 373px;
+    height: 594px;
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: left bottom;
+  }
+
+}
