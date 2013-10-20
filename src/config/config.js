@@ -15,7 +15,7 @@ module.exports = {
 
 
         // Just in case we need a database for development
-        db: 'mongodb://localhost/total-env-dev',
+        db: rocess.env.MONGOLAB_URI ||  'mongodb://localhost/total-env-dev',
 
 
         // Facebook App Client IDs
