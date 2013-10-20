@@ -137,6 +137,8 @@ module.exports = function(grunt) {
         var p = exec('git subtree push --prefix bin/ heroku master', function() {
             done();
         });
+        p.stdout.pipe(process.stdout);
+        p.stderr.pipe(process.stderr);
     });
 
 
