@@ -151,7 +151,7 @@ require([
 
 
                 if($(window).scrollTop() + $(window).height() > $(document).height()) {
-
+                    lock();
                     $('nav').show();
                     $('body').css('overflow', 'hidden');
                 }
@@ -171,12 +171,24 @@ require([
             });
 
 
-            $(document).bind(
-                'touchmove',
-                function(e) {
-                    e.preventDefault();
-                }
-            );
+            function lock() {
+                return;
+                $(document).bind(
+                    'touchmove',
+                    function(e) {
+                        e.preventDefault();
+                    }
+                );
+            }
+
+            function unlock() {
+                $(document).bind(
+                    'touchmove',
+                    function(e) {
+
+                    }
+                );
+            }
 
 
             $(document).bind(
@@ -248,6 +260,7 @@ require([
                     $('nav').hide();
                     $('#info').hide().css('opacity', 0);
                     $('body').css('overflow', 'visible');
+                    unlock();
                 }
 
                 delta *= 0.9;

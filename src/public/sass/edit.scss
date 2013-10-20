@@ -1,0 +1,62 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+@import "compass/css3/transform";
+@import "compass/css3/transition";
+@import "mixins/animation";
+@import "compass/css3/box-sizing";
+
+$pink-dark  :   #E5005B;
+$pink-light :   #FF63A1;
+$yellow     :   #F3FF23;
+
+
+* {
+    @include box-sizing(border-box);
+}
+
+
+html, body {
+    width: 100%;
+    height: 100%;
+    font-family: Helvetica, sans;
+    color: #fff;
+    //overflow: hidden;
+}
+
+footer {
+    font-size: 10px;
+    color: #000;
+    p {
+        float: right;
+        padding-top: 20px;
+        padding-right: 30px;
+    }
+    #license {
+        font-size: 7px;
+    }
+}
+
+
+nav {
+
+    position: fixed;
+    top: 0px;
+    left: 40px;
+
+    ul {
+        li {
+            float: left;
+            margin-right: 1px;
+        }
+    }
+}
+
+@import "btn";
+
+
+
+

@@ -7,6 +7,7 @@
 @import "compass/css3/transform";
 @import "compass/css3/transition";
 @import "mixins/animation";
+@import "mixins/pointer-events";
 
 $pink-dark  :   #E5005B;
 $pink-light :   #FF63A1;
@@ -50,6 +51,7 @@ h1 {
 svg {
     width: 100%;
     height: 100%;
+    @include pointer-events(none);
 }
 
 

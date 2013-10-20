@@ -29,3 +29,10 @@
     background-size: 70%;
     background-image: url('../img/icons/info.svg');
 }
+
+.back-btn {
+    @extend .btn;
+    display: block;
+    height: 40px;
+    padding: 5px;
+}
