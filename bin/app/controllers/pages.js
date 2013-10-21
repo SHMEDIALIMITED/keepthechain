@@ -5,6 +5,11 @@ module.exports = function(config) {
             res.render('index', {layout:false,locals:{
                 version: config.version}});
 
+        },
+
+        edit : function(req, res) {
+            res.render('edit', {layout:false,locals:{
+                version: config.version}});
         }
 	}
 }
