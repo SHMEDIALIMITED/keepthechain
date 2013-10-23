@@ -59,7 +59,7 @@
 				jGraduatePath: 'jgraduate/images/',
 				extensions: ['ext-markers.js','ext-connector.js', 'ext-eyedropper.js', 'ext-shapes.js', 'ext-imagelib.js','ext-grid.js'],
 				initTool: 'select',
-				wireframe: false,
+				wireframe: true,
 				colorPickerCSS: null,
 				gridSnapping: false,
 				gridColor: "#000",

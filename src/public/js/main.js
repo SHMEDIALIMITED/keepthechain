@@ -20,7 +20,8 @@ require.config({
         'twitter' : '//platform.twitter.com/widgets',
         'facebook' : '//connect.facebook.net/en_US/all',
         'three' : 'libs/three',
-        'pablo' : 'libs/pablo.min'
+        'pablo' : 'libs/pablo.min',
+        'hammer' : 'libs/jquery.hammer'
 
 	},
  
@@ -34,7 +35,7 @@ require.config({
         },
 
 		'backbone': {
-			deps: ['underscore', 'jquery', 'touchwipe'],
+			deps: ['underscore', 'jquery', 'touchwipe', 'hammer'],
 			exports: 'Backbone'
 		},
         'touchwipe' : {
@@ -69,13 +70,16 @@ require([
 
         $(function() {
 
-            var Sketch = function(parent, direction ,open,closed) {
+            var Sketch = function(index, direction ,open,closed) {
+                this.index = index;
                 this.direction = direction;
                 this.parent = parent;
                 this.closed = closed;
+                this.opened = open;
                 this.el = Pablo('<g id="unit" display="inline"><g id="unit-inner" display="inline">' + open + '</g></g>');
                 this.graphic = this.el.find('#unit-inner');
-                this.parent.append(this.el);
+                this.isOpen = false;
+                this.isClosed = false;
             }
 
             Sketch.prototype = {
@@ -86,9 +90,21 @@ require([
                     this.graphic.css('-webkit-transform', 'translate3d(' + (x * this.direction.pos) + 'px, ' + (y * this.direction.pos)+ 'px, 0px) scale3d(' + (frame.scale * this.direction.scale) + ', ' + (frame.scale * this.direction.scale) + ', 1)');
                 },
 
-                eat : function() {
+                close : function() {
+                    if(this.isClosed) return;
+                    if(this.prev) this.prev.remove();
+                    this.isOpen= false;
+                    this.isClosed = true;
                     this.graphic.empty();
                     this.graphic.append(this.closed)
+                },
+
+                open : function() {
+                    if(this.isOpen) return;
+                    this.isClosed = false;
+                    this.isOpen = true;
+                    this.graphic.empty();
+                    this.graphic.append(this.opened)
                 },
 
                 align : function(rect) {
@@ -97,6 +113,10 @@ require([
 
                 remove : function() {
                     this.el.remove();
+                },
+
+                prev : function(object) {
+                    this.prev = object;
                 }
 
             }
@@ -134,90 +154,65 @@ require([
 
             var current, prev;
             var i = -1;
-            var delta;
+            var delta = -10;
             var pos = 0;
             var rect = {};
             var drawCenter
+            var direction = -1;
             var startPos;
+            var introScroll = false;
 
             $('nav a.info-btn').bind('mouseover', function() {
                 $('#info').show().css('opacity', 1);
             });
 
-            $(window).bind('scroll', function() {
 
+            $('body').hammer({drag_block_vertical: true})
+                .one('swipeup', function(event) {
+                    $('h1').addClass('hide')
+                })
+                .on('drag', function(e) {
 
+                    delta = Math.max(e.gesture.deltaY >> 3, -50);
 
+                    if(delta < 0 && direction > 0) {
 
+                    } else if(delta > 0 && direction < 0) {
 
-                if($(window).scrollTop() + $(window).height() > $(document).height()) {
-                    lock();
-                    $('nav').show();
-                    $('body').css('overflow', 'hidden');
-                }
-            })
-
-
-            $(window).bind('mousewheel', function(e) {
-                var w = $(window);
-
-
-                delta = e.originalEvent.wheelDelta >> 2;
-
-
-
-
-
-            });
-
-
-            function lock() {
-                return;
-                $(document).bind(
-                    'touchmove',
-                    function(e) {
-                        e.preventDefault();
-                    }
-                );
-            }
-
-            function unlock() {
-                $(document).bind(
-                    'touchmove',
-                    function(e) {
 
                     }
-                );
+
+                    direction = delta;
+
+                })
+
+            var closed = '<path id="closed" d="m-3,-121c57,0 132,36 137,117c5,81 -70,131 -128,126c-58,-5 -92,-129 -92,-122c0,7 101,-1 101,0c0,1 -89,0 -89,0c0,0 14,-121 71,-121z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#ffff00"/>';
+            var open = '  <path id="open" d="m-4,-120c57,0 132,36 137,117c5,81 -70,131 -128,126c-58,-5 -92,-70 -92,-70c0,0 101,-41 101,-41c0,0 -89,-78 -89,-78c0,0 14,-54 71,-54z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#ffff00"/>';
+
+
+            var items = [];
+
+            for(var i = 0; i < 10; ++i) {
+                var direction = directions[Math.floor(Math.random() * 2)];
+                var s = new Sketch(i, direction, open, closed);
+                items.push(s);
             }
+            i=-1;
 
 
-            $(document).bind(
-                'touchstart',
-                function(e) {
-                    console.log('START', e);
-                    startPos = e.originalEvent.pageY;
-
-                }
-            );
 
 
-            $(document).bind(
-                'touchend',
-                function(e) {
-                    console.log('END', startPos, e.originalEvent);
-
-                    console.log((startPos - e.originalEvent.changedTouches[0].pageY) * -1)
-                    delta = ((startPos - e.originalEvent.changedTouches[0].pageY) * -1) >> 1;
 
 
-                }
-            );
-
-            delta = -10;
 
 
-            function launch() {
-                create();
+
+            function launch(i) {
+                var food = current;
+                if(current);
+                current = items[i];
+                current.prev(food)
+                Pablo("svg").append(current.el)
                 resize();
             }
 
@@ -234,62 +229,57 @@ require([
             }
 
 
-            function create() {
-                prev = current;
-
-                var closed = '<path id="svg_4" d="m-3,-121c57,0 132,36 137,117c5,81 -70,131 -128,126c-58,-5 -92,-129 -92,-122c0,7 101,-1 101,0c0,1 -89,0 -89,0c0,0 14,-121 71,-121z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#ffff00"/>';
-                var open = '  <path id="svg_2" d="m-4,-120c57,0 132,36 137,117c5,81 -70,131 -128,126c-58,-5 -92,-70 -92,-70c0,0 101,-41 101,-41c0,0 -89,-78 -89,-78c0,0 14,-54 71,-54z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#000000" fill="#ffff00"/>';
-                var direction = directions[Math.floor(Math.random() * 2)];
-                console.log('DIR', direction)
-                current = new Sketch(Pablo("svg"),direction, open, closed);
-            }
-
-
-
             $(window).resize(resize);
             //resize();
 
             function render() {
                 requestAnimFrame(render);
 
-                var index = ~~(pos / 960);
-                pos -= ~~(delta)
-                //console.log(delta)
 
-                if(delta > 0) {
-                    $('nav').hide();
-                    $('#info').hide().css('opacity', 0);
-                    $('body').css('overflow', 'visible');
-                    unlock();
+
+                var index = ~~(pos / 960);
+
+                if(index == items.length || index < 0) {
+                    return;
                 }
 
-                delta *= 0.9;
+                pos -= ~~(delta)
+                delta *= 0.97;
 
-                if(i != index) {
+                console.log(i ,index)
+
+
+
+                if(i < index) {
                     i = index;
-                    launch();
-                    //console.log(i)
+                    launch(i);
+                } else if(i > index) {
+                    i = index;
+                    launch(i);
                 }
 
                 var frameIndex = pos - i * 960;
-                if(prev && frameIndex > 480) {
-                    current.eat();
-                    prev.remove();
+
+              //  console.log(i);
+
+                if(frameIndex > 480) {
+                    current.close();
+                } else if(current && frameIndex < 480 && direction > 0) {
+                    current.open();
+                    Pablo("svg").prepend(current.prev.el)
                 }
 
 
                 var frame = horizontal[frameIndex];
                 if(current && frame) {
-
                     current.update(frame, rect);
                 }
 
-                //console.log('render', frame);
             }
 
             render();
 
-            //create();
+
         });
 
 });
