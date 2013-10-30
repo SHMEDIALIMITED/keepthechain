@@ -27,11 +27,7 @@ define(
                 console.log('TOGGLE');
                 e.preventDefault();
                 this.$info.css('opacity', 1);
-                if(this.$info.css('display') == 'none') {
-
-                } else {
-                    this.$info.css('opacity', 0)
-                }
+               
 
                 return false;
 
