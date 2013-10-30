@@ -4,18 +4,24 @@
 define(
 
     [
-        ''
+        'pablo'
     ],
 
     function() {
 
-        var Sketch = function(parent, direction ,open,closed) {
-            this.direction = direction;
+        var Sketch = function(parent, model) {
+
+
+
+            this.direction = model.get('direction');
             this.parent = parent;
-            this.closed = closed;
-            this.opened = open;
-            this.el = Pablo('<g id="unit" display="inline"><g id="unit-inner" display="inline">' + open + '</g></g>');
-            this.graphic = this.el.find('#unit-inner');
+            this.closed = model.get('closed');
+            this.opened = model.get('open');
+            this.el = Pablo('<g display="inline"></g>');
+
+            this.graphic = Pablo('<g display="inline">' + this.opened  + '</g>').appendTo(this.el)
+
+
             this.isOpen = false;
             this.isClosed = false;
         }
@@ -30,6 +36,9 @@ define(
 
             close : function() {
                 if(this.isClosed) return;
+
+                console.log('CLOSE', this.prev)
+
                 if(this.prev) this.prev.remove();
                 this.isOpen= false;
                 this.isClosed = true;
@@ -39,6 +48,7 @@ define(
 
             open : function() {
                 if(this.isOpen) return;
+                if(this.prev) this.prev.prepend();
                 this.isClosed = false;
                 this.isOpen = true;
                 this.graphic.empty();
@@ -51,7 +61,19 @@ define(
 
             remove : function() {
                 this.el.remove();
+            },
+
+            prepend : function() {
+                this.parent.prepend(this.el);
+            },
+
+            append : function() {
+                this.parent.append(this.el);
             }
+
+
+
+
 
         }
 

@@ -3,13 +3,14 @@
  */
 define(
     [
+        'view/Sketch',
         'model/SketchCollection',
         'controller/ScrollController',
         'backbone'
     ],
 
     function(
-
+        Sketch,
         SketchCollection,
         ScrollController
 
@@ -21,7 +22,17 @@ define(
 
 
         var pos = 0.0;
-        var currentIndex = 0;
+        var currentIndex = -1;
+        var current;
+
+        var sketcheCollection;
+        var sketchViews;
+
+        var scrollController;
+
+        var svg;
+
+        var rect;
 
         var App = Backbone.View.extend({
 
@@ -29,78 +40,106 @@ define(
 
             initialize : function() {
 
+                rect = {};
+                sketchViews = [];
+
+                sketcheCollection = new SketchCollection();
+                sketcheCollection.on('add', _.bind(this._sketchesAdded, this));
+                sketcheCollection.fetch({remove: false, success: _.bind(this._run, this)});
+
+                scrollController = new ScrollController();
+
+                svg = Pablo('svg');
 
 
-                var sketches = new SketchCollection();
-                sketches.fetch({success: function() {
-                    console.log('TATA', sketches)
-
-
-                }});
-
-
-                this.scrollController = new ScrollController();
-
-
-
-
-                this._run();
             },
 
             _run : function() {
+
+                $(window).resize(_.bind(this._resize));
+
                 this._render();
+            },
+
+            _sketchesAdded : function(sketchModel) {
+
+
+                var sketch = new Sketch(svg, sketchModel);
+                sketch.prev = sketchViews[sketchViews.length - 1];
+                sketchViews.push(sketch);
+
             },
 
             _render : function() {
 
                 requestAnimFrame(_.bind(this._render, this));
 
-                this.scrollController.delta *= 0.97;
-                var delta = this.scrollController.delta;
+                scrollController.update();
 
+
+
+
+                pos -= ~~(scrollController.delta);
+                pos = Math.min(Math.max(pos, 1),sketchViews.length * 960 );
 
                 var index = ~~(pos / 960);
-                pos -= ~~(delta)
-                pos = Math.max(pos, 0)
 
 
 
+                if(index >= sketchViews.length) {
+
+                    // TODO : load more sketches
+
+                    console.log('LOAD MORE SKETCHES');
+
+                } else {
+
+                    if(currentIndex < index) {
+                        currentIndex = index;
+                        current = sketchViews[currentIndex];
+                        current.append();
+                        this._resize();
+                    } else if(currentIndex > index) {
+                        if(current) current.remove();
+                        currentIndex = index;
+                        current = sketchViews[currentIndex];
+                        current.append();
+                        this._resize();
+                    }
+
+                    // get animation frame index
+                    var frameIndex = pos - currentIndex * 960;
+
+                    // control mouth
+                    if(current && frameIndex > 480) {
+                        current.close();
+                    } else if(current && frameIndex < 480) {
+                        current.open();
+                    }
 
 
-
-                if(currentIndex != index) {
-                    currentIndex = index;
-                    console.log('INDEX', index);
+                    // update sketch position
+                    var frame = horizontal[frameIndex];
+                    if(current && frame) {
+                        current.update(frame, rect);
+                    }
                 }
 
-                var frameIndex = pos - currentIndex * 960;
 
 
-//                if(frameIndex > 480) {
-//                    current.close();
-//                } else if(current && frameIndex < 480 && direction > 0) {
-//                    current.open();
-//                    Pablo("svg").prepend(current.prev.el)
-//                }
-//
-//
-//                var frame = horizontal[frameIndex];
-//                if(current && frame) {
-//                    current.update(frame, rect);
-//                }
 
-                //console.log('RENDER', delta);
+
             },
 
             _resize : function() {
-                var rect = {};
+
                 var w = $(window);
 
                 rect.width = w.width();
                 rect.height = w.height();
                 rect.x = w.width() >> 1;
                 rect.y = w.height() >> 1;
-                //current.align(rect);
+                current.align(rect);
             }
 
         });

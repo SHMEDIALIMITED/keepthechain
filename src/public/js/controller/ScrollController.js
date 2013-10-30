@@ -18,15 +18,19 @@ function() {
     ScrollController.prototype = {
 
         _processDelta: function(delta) {
-            this.delta = delta;
+            this.delta = delta >> 2;
         },
 
         _hammerDrag : function(e) {
-            this._processDelta(e.gesture.deltaY);
+            this._processDelta(e.gesture.deltaY >> 2);
         },
 
         _mouseWheel : function(e) {
             this._processDelta(e.originalEvent.wheelDelta);;
+        },
+
+        update : function() {
+            this.delta *= 0.97;
         }
 
     }
