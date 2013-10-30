@@ -62,7 +62,8 @@ require.config({
 require([
 
     'view/App',
-    'raf'
+    'raf',
+    'underscore'
 ],
 
     function( App ) {
