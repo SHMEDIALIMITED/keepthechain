@@ -60,13 +60,14 @@ require.config({
 });
  
 require([
+    'backbone',
     'underscore',
     'view/App',
     'raf',
 
 ],
 
-    function( _, App ) {
+    function( Backbone, _, App ) {
 
         var app;
 
