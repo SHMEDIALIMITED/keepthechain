@@ -25,7 +25,7 @@ define(
             this.isOpen = false;
             this.isClosed = false;
 
-            
+
         }
 
         Sketch.prototype = {
