@@ -22,6 +22,7 @@ function() {
         },
 
         _hammerDrag : function(e) {
+            return;
             this._processDelta(e.gesture.deltaY >> 2);
         },
 

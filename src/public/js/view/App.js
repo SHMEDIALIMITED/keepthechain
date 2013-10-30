@@ -3,6 +3,7 @@
  */
 define(
     [
+        'view/Editor',
         'view/Navigation',
         'model/Animations',
         'view/Title',
@@ -14,6 +15,7 @@ define(
 
     function(
 
+        Editor,
         Navigation,
         Animations,
         Title,
@@ -35,6 +37,7 @@ define(
         var scrollController;
 
         var navigation;
+        var editor;
 
         var svg;
 
@@ -60,17 +63,20 @@ define(
                 scrollController = new ScrollController();
 
                 navigation = new Navigation();
+                navigation.on('navigate', _.bind(this._onStateChange));
                 navigation.show();
+
+                editor = new Editor();
+
 
                 svg = Pablo('svg');
 
+                $(window).resize(_.bind(this._resize));
+                this._resize();
 
             },
 
             _run : function() {
-
-                $(window).resize(_.bind(this._resize));
-
                 this._render();
             },
 
@@ -81,8 +87,18 @@ define(
                 } else {
                     sketchModel.set('animation', Animations.horizontal);
                     var sketch = new Sketch(svg, sketchModel);
+                    sketch.update(1, rect);
                     sketch.prev = sketchViews[sketchViews.length - 1];
                     sketchViews.push(sketch);
+                }
+            },
+
+
+            _onStateChange : function(newState) {
+                switch(newState) {
+                    case 'edit' :
+                        editor.show();
+                        break;
                 }
             },
 
@@ -155,7 +171,9 @@ define(
                 rect.height = w.height();
                 rect.x = w.width() >> 1;
                 rect.y = w.height() >> 1;
-                current.align(rect);
+                if(current) current.align(rect);
+
+                editor.resize(rect)
             }
 
         });

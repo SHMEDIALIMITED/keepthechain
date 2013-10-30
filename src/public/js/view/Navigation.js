@@ -13,13 +13,15 @@ define(
 
             events : {
 
-                'mousedown .info-btn' : '_toggleInfo'
+                'mousedown .info-btn' : '_toggleInfo',
+                'mousedown .plus-btn' : '_showEditor'
 
             },
 
             initialize : function() {
                 _.bindAll(this, '_toggleInfo');
                 this.$info = $('#info').show();
+                this.$editor = $('#editor');
             },
 
             _toggleInfo : function(e) {
@@ -27,10 +29,14 @@ define(
                 console.log('TOGGLE');
                 e.preventDefault();
                 this.$info.css('opacity', 1);
-               
+
 
                 return false;
 
+            },
+
+            _showEditor : function() {
+                this.trigger('navigate', 'edit');
             },
 
             show : function() {

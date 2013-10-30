@@ -21,7 +21,8 @@ require.config({
         'facebook' : '//connect.facebook.net/en_US/all',
         'three' : 'libs/three',
         'pablo' : 'libs/pablo.min',
-        'hammer' : 'libs/jquery.hammer'
+        'hammer' : 'libs/jquery.hammer',
+        'fabric' : 'libs/fabric.require'
 
 	},
  
