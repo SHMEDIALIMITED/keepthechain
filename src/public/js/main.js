@@ -60,13 +60,13 @@ require.config({
 });
  
 require([
-
+    'underscore',
     'view/App',
     'raf',
-    'underscore'
+
 ],
 
-    function( App ) {
+    function( _, App ) {
 
         var app;
 
