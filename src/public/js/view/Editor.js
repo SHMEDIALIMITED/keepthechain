@@ -6,7 +6,7 @@ define([
     'fabric',
     'backbone'
 
-], function() {
+], function(fabric, Backbone) {
 
     var canvas;
 
