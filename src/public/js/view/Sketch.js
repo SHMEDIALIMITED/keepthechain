@@ -12,7 +12,7 @@ define(
         var Sketch = function(parent, model) {
 
 
-
+            this.animation = model.get('animation');
             this.direction = model.get('direction');
             this.parent = parent;
             this.closed = model.get('closed');
@@ -24,11 +24,18 @@ define(
 
             this.isOpen = false;
             this.isClosed = false;
+
+            
         }
 
         Sketch.prototype = {
 
-            update : function(frame, rect) {
+            update : function(frameIndex, rect) {
+                var frame = this.animation[frameIndex];
+
+
+
+                if(!frame) return;
                 var x = (rect.x * frame.x);
                 var y = (rect.y * frame.y);
                 this.graphic.css('-webkit-transform', 'translate3d(' + (x * this.direction.pos) + 'px, ' + (y * this.direction.pos)+ 'px, 0px) scale3d(' + (frame.scale * this.direction.scale) + ', ' + (frame.scale * this.direction.scale) + ', 1)');

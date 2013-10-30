@@ -101,16 +101,11 @@ h1 {
   background-repeat: no-repeat, no-repeat;
   background-size: 70%, 10%;
   background-position: 50% 45%, 50% 90%;
-  display: none;
   text-indent: -9999px;
   z-index: 2;
-  -webkit-transition: -webkit-transform 1s ease-out;
-  -moz-transition: -moz-transform 1s ease-out;
-  -o-transition: -o-transform 1s ease-out;
-  transition: transform 1s ease-out;
 }
 
-/* line 53, ../sass/screen.scss */
+/* line 52, ../sass/screen.scss */
 h1.hide {
   -webkit-transform: translate(0px, -1200px);
   -moz-transform: translate(0px, -1200px);
@@ -119,7 +114,7 @@ h1.hide {
   transform: translate(0px, -1200px);
 }
 
-/* line 57, ../sass/screen.scss */
+/* line 56, ../sass/screen.scss */
 svg {
   z-index: 1;
   width: 100%;
@@ -183,8 +178,9 @@ nav {
   top: 0px;
   left: 40px;
   display: none;
+  z-index: 10;
 }
-/* line 9, ../sass/_nav.scss */
+/* line 10, ../sass/_nav.scss */
 nav ul li {
   float: left;
   margin-right: 1px;
@@ -199,18 +195,19 @@ nav ul li {
   display: none;
   padding: 12px 30px;
   opacity: 0;
+  z-index: 10;
   -webkit-transition: opacity 0.5s;
   -moz-transition: opacity 0.5s;
   -o-transition: opacity 0.5s;
   transition: opacity 0.5s;
 }
-/* line 14, ../sass/_info.scss */
+/* line 15, ../sass/_info.scss */
 #info a[href^="http"] {
   color: #ffff00;
 }
 
 @-o-keyframes upper-jaw-animation {
-  /* line 78, ../sass/screen.scss */
+  /* line 77, ../sass/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -219,7 +216,7 @@ nav ul li {
     transform: rotate(0deg);
   }
 
-  /* line 81, ../sass/screen.scss */
+  /* line 80, ../sass/screen.scss */
   100% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
@@ -230,7 +227,7 @@ nav ul li {
 }
 
 @-moz-keyframes upper-jaw-animation {
-  /* line 78, ../sass/screen.scss */
+  /* line 77, ../sass/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -239,7 +236,7 @@ nav ul li {
     transform: rotate(0deg);
   }
 
-  /* line 81, ../sass/screen.scss */
+  /* line 80, ../sass/screen.scss */
   100% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
@@ -250,7 +247,7 @@ nav ul li {
 }
 
 @-webkit-keyframes upper-jaw-animation {
-  /* line 78, ../sass/screen.scss */
+  /* line 77, ../sass/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -259,7 +256,7 @@ nav ul li {
     transform: rotate(0deg);
   }
 
-  /* line 81, ../sass/screen.scss */
+  /* line 80, ../sass/screen.scss */
   100% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
@@ -270,7 +267,7 @@ nav ul li {
 }
 
 @-ms-keyframes upper-jaw-animation {
-  /* line 78, ../sass/screen.scss */
+  /* line 77, ../sass/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -279,7 +276,7 @@ nav ul li {
     transform: rotate(0deg);
   }
 
-  /* line 81, ../sass/screen.scss */
+  /* line 80, ../sass/screen.scss */
   100% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
@@ -290,7 +287,7 @@ nav ul li {
 }
 
 @-keyframes upper-jaw-animation {
-  /* line 78, ../sass/screen.scss */
+  /* line 77, ../sass/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -299,7 +296,7 @@ nav ul li {
     transform: rotate(0deg);
   }
 
-  /* line 81, ../sass/screen.scss */
+  /* line 80, ../sass/screen.scss */
   100% {
     -webkit-transform: rotate(-30deg);
     -moz-transform: rotate(-30deg);
@@ -310,7 +307,7 @@ nav ul li {
 }
 
 @-o-keyframes lower-jaw-animation {
-  /* line 87, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -319,7 +316,7 @@ nav ul li {
     transform: rotate(0deg);
   }
 
-  /* line 90, ../sass/screen.scss */
+  /* line 89, ../sass/screen.scss */
   100% {
     -webkit-transform: rotate(20deg);
     -moz-transform: rotate(20deg);
@@ -330,7 +327,7 @@ nav ul li {
 }
 
 @-moz-keyframes lower-jaw-animation {
-  /* line 87, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -339,7 +336,7 @@ nav ul li {
     transform: rotate(0deg);
   }
 
-  /* line 90, ../sass/screen.scss */
+  /* line 89, ../sass/screen.scss */
   100% {
     -webkit-transform: rotate(20deg);
     -moz-transform: rotate(20deg);
@@ -350,7 +347,7 @@ nav ul li {
 }
 
 @-webkit-keyframes lower-jaw-animation {
-  /* line 87, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -359,7 +356,7 @@ nav ul li {
     transform: rotate(0deg);
   }
 
-  /* line 90, ../sass/screen.scss */
+  /* line 89, ../sass/screen.scss */
   100% {
     -webkit-transform: rotate(20deg);
     -moz-transform: rotate(20deg);
@@ -370,7 +367,7 @@ nav ul li {
 }
 
 @-ms-keyframes lower-jaw-animation {
-  /* line 87, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -379,7 +376,7 @@ nav ul li {
     transform: rotate(0deg);
   }
 
-  /* line 90, ../sass/screen.scss */
+  /* line 89, ../sass/screen.scss */
   100% {
     -webkit-transform: rotate(20deg);
     -moz-transform: rotate(20deg);
@@ -390,7 +387,7 @@ nav ul li {
 }
 
 @-keyframes lower-jaw-animation {
-  /* line 87, ../sass/screen.scss */
+  /* line 86, ../sass/screen.scss */
   0% {
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -399,7 +396,7 @@ nav ul li {
     transform: rotate(0deg);
   }
 
-  /* line 90, ../sass/screen.scss */
+  /* line 89, ../sass/screen.scss */
   100% {
     -webkit-transform: rotate(20deg);
     -moz-transform: rotate(20deg);
@@ -410,7 +407,7 @@ nav ul li {
 }
 
 @-o-keyframes attack {
-  /* line 96, ../sass/screen.scss */
+  /* line 95, ../sass/screen.scss */
   0% {
     -webkit-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
     -moz-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
@@ -419,7 +416,7 @@ nav ul li {
     transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
   }
 
-  /* line 100, ../sass/screen.scss */
+  /* line 99, ../sass/screen.scss */
   100% {
     -webkit-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
     -moz-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
@@ -430,7 +427,7 @@ nav ul li {
 }
 
 @-moz-keyframes attack {
-  /* line 96, ../sass/screen.scss */
+  /* line 95, ../sass/screen.scss */
   0% {
     -webkit-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
     -moz-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
@@ -439,7 +436,7 @@ nav ul li {
     transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
   }
 
-  /* line 100, ../sass/screen.scss */
+  /* line 99, ../sass/screen.scss */
   100% {
     -webkit-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
     -moz-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
@@ -450,7 +447,7 @@ nav ul li {
 }
 
 @-webkit-keyframes attack {
-  /* line 96, ../sass/screen.scss */
+  /* line 95, ../sass/screen.scss */
   0% {
     -webkit-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
     -moz-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
@@ -459,7 +456,7 @@ nav ul li {
     transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
   }
 
-  /* line 100, ../sass/screen.scss */
+  /* line 99, ../sass/screen.scss */
   100% {
     -webkit-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
     -moz-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
@@ -470,7 +467,7 @@ nav ul li {
 }
 
 @-ms-keyframes attack {
-  /* line 96, ../sass/screen.scss */
+  /* line 95, ../sass/screen.scss */
   0% {
     -webkit-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
     -moz-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
@@ -479,7 +476,7 @@ nav ul li {
     transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
   }
 
-  /* line 100, ../sass/screen.scss */
+  /* line 99, ../sass/screen.scss */
   100% {
     -webkit-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
     -moz-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
@@ -490,7 +487,7 @@ nav ul li {
 }
 
 @-keyframes attack {
-  /* line 96, ../sass/screen.scss */
+  /* line 95, ../sass/screen.scss */
   0% {
     -webkit-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
     -moz-transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
@@ -499,7 +496,7 @@ nav ul li {
     transform: scale3d(3, 3, 1) translate3d(100px, 0px, 0px);
   }
 
-  /* line 100, ../sass/screen.scss */
+  /* line 99, ../sass/screen.scss */
   100% {
     -webkit-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
     -moz-transform: scale3d(2, 2, 1) translate3d(0px, 0px, 0px);
@@ -510,7 +507,7 @@ nav ul li {
 }
 
 @-o-keyframes shrink {
-  /* line 106, ../sass/screen.scss */
+  /* line 105, ../sass/screen.scss */
   0% {
     -webkit-transform: scale3d(2, 2, 1);
     -moz-transform: scale3d(2, 2, 1);
@@ -519,7 +516,7 @@ nav ul li {
     transform: scale3d(2, 2, 1);
   }
 
-  /* line 110, ../sass/screen.scss */
+  /* line 109, ../sass/screen.scss */
   100% {
     -webkit-transform: scale3d(0.2, 0.2, 1);
     -moz-transform: scale3d(0.2, 0.2, 1);
@@ -530,7 +527,7 @@ nav ul li {
 }
 
 @-moz-keyframes shrink {
-  /* line 106, ../sass/screen.scss */
+  /* line 105, ../sass/screen.scss */
   0% {
     -webkit-transform: scale3d(2, 2, 1);
     -moz-transform: scale3d(2, 2, 1);
@@ -539,7 +536,7 @@ nav ul li {
     transform: scale3d(2, 2, 1);
   }
 
-  /* line 110, ../sass/screen.scss */
+  /* line 109, ../sass/screen.scss */
   100% {
     -webkit-transform: scale3d(0.2, 0.2, 1);
     -moz-transform: scale3d(0.2, 0.2, 1);
@@ -550,7 +547,7 @@ nav ul li {
 }
 
 @-webkit-keyframes shrink {
-  /* line 106, ../sass/screen.scss */
+  /* line 105, ../sass/screen.scss */
   0% {
     -webkit-transform: scale3d(2, 2, 1);
     -moz-transform: scale3d(2, 2, 1);
@@ -559,7 +556,7 @@ nav ul li {
     transform: scale3d(2, 2, 1);
   }
 
-  /* line 110, ../sass/screen.scss */
+  /* line 109, ../sass/screen.scss */
   100% {
     -webkit-transform: scale3d(0.2, 0.2, 1);
     -moz-transform: scale3d(0.2, 0.2, 1);
@@ -570,7 +567,7 @@ nav ul li {
 }
 
 @-ms-keyframes shrink {
-  /* line 106, ../sass/screen.scss */
+  /* line 105, ../sass/screen.scss */
   0% {
     -webkit-transform: scale3d(2, 2, 1);
     -moz-transform: scale3d(2, 2, 1);
@@ -579,7 +576,7 @@ nav ul li {
     transform: scale3d(2, 2, 1);
   }
 
-  /* line 110, ../sass/screen.scss */
+  /* line 109, ../sass/screen.scss */
   100% {
     -webkit-transform: scale3d(0.2, 0.2, 1);
     -moz-transform: scale3d(0.2, 0.2, 1);
@@ -590,7 +587,7 @@ nav ul li {
 }
 
 @-keyframes shrink {
-  /* line 106, ../sass/screen.scss */
+  /* line 105, ../sass/screen.scss */
   0% {
     -webkit-transform: scale3d(2, 2, 1);
     -moz-transform: scale3d(2, 2, 1);
@@ -599,7 +596,7 @@ nav ul li {
     transform: scale3d(2, 2, 1);
   }
 
-  /* line 110, ../sass/screen.scss */
+  /* line 109, ../sass/screen.scss */
   100% {
     -webkit-transform: scale3d(0.2, 0.2, 1);
     -moz-transform: scale3d(0.2, 0.2, 1);
@@ -609,7 +606,7 @@ nav ul li {
   }
 }
 
-/* line 116, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 .attack {
   -o-animation: attack 0.5s ease-in;
   -moz-animation: attack 0.5s ease-in;
@@ -618,7 +615,7 @@ nav ul li {
   animation: attack 0.5s ease-in;
 }
 
-/* line 120, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 .shrink {
   -o-animation: shrink 0.5s ease-in;
   -moz-animation: shrink 0.5s ease-in;
@@ -627,7 +624,7 @@ nav ul li {
   animation: shrink 0.5s ease-in;
 }
 
-/* line 124, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 .upper {
   -o-animation: upper-jaw-animation 1s ease-out infinite;
   -moz-animation: upper-jaw-animation 1s ease-out infinite;
@@ -636,7 +633,7 @@ nav ul li {
   animation: upper-jaw-animation 1s ease-out infinite;
 }
 
-/* line 130, ../sass/screen.scss */
+/* line 129, ../sass/screen.scss */
 .lower {
   -webkit-transform-origin: 430px 200px;
   -o-animation: lower-jaw-animation 1s ease-out infinite;
@@ -646,7 +643,7 @@ nav ul li {
   animation: lower-jaw-animation 1s ease-out infinite;
 }
 
-/* line 135, ../sass/screen.scss */
+/* line 134, ../sass/screen.scss */
 .unit {
   position: absolute;
 }

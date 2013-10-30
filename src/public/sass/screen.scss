@@ -44,10 +44,9 @@ h1 {
     background-repeat: no-repeat, no-repeat;
     background-size: 70%, 10%;
     background-position: 50% 45%, 50% 90%;
-    display: none;
     text-indent: -9999px;
     z-index: 2;
-    @include transition(transform 1s ease-out);
+
 }
 
 h1.hide {
