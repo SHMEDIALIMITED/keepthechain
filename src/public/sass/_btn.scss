@@ -30,6 +30,33 @@
     background-image: url('../img/icons/info.svg');
 }
 
+.save-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/save.svg');
+}
+
+.eraser-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/eraser.svg');
+}
+
+.line-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/line.svg');
+}
+
+.move-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/move.svg');
+}
+
+.fill-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/fill.svg');
+}
+
+
+
 .back-btn {
     @extend .btn;
     display: block;

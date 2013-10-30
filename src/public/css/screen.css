@@ -129,7 +129,7 @@ svg {
 }
 
 /* line 1, ../sass/_btn.scss */
-.btn, .icon-btn, .plus-btn, .info-btn, .back-btn {
+.btn, .icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .line-btn, .move-btn, .fill-btn, .back-btn {
   background-color: #e5005b;
   cursor: pointer;
   -webkit-transition: background-color 0.5s;
@@ -139,12 +139,12 @@ svg {
 }
 
 /* line 7, ../sass/_btn.scss */
-.btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .back-btn:hover {
+.btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .save-btn:hover, .eraser-btn:hover, .line-btn:hover, .move-btn:hover, .fill-btn:hover, .back-btn:hover {
   background-color: #ff63a1;
 }
 
 /* line 11, ../sass/_btn.scss */
-.icon-btn, .plus-btn, .info-btn {
+.icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .line-btn, .move-btn, .fill-btn {
   display: block;
   background-size: 50%;
   background-position: center;
@@ -166,6 +166,31 @@ svg {
 }
 
 /* line 33, ../sass/_btn.scss */
+.save-btn {
+  background-image: url("../img/icons/save.svg");
+}
+
+/* line 38, ../sass/_btn.scss */
+.eraser-btn {
+  background-image: url("../img/icons/eraser.svg");
+}
+
+/* line 43, ../sass/_btn.scss */
+.line-btn {
+  background-image: url("../img/icons/line.svg");
+}
+
+/* line 48, ../sass/_btn.scss */
+.move-btn {
+  background-image: url("../img/icons/move.svg");
+}
+
+/* line 53, ../sass/_btn.scss */
+.fill-btn {
+  background-image: url("../img/icons/fill.svg");
+}
+
+/* line 60, ../sass/_btn.scss */
 .back-btn {
   display: block;
   height: 40px;
@@ -229,6 +254,10 @@ nav ul li {
   position: absolute;
   top: 100px;
   z-index: 12;
+}
+/* line 25, ../sass/_editor.scss */
+#editor ul li {
+  margin-bottom: 1px;
 }
 
 @-o-keyframes upper-jaw-animation {

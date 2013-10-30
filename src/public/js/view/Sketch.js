@@ -44,7 +44,7 @@ define(
             close : function() {
                 if(this.isClosed) return;
 
-                console.log('CLOSE', this.prev)
+
 
                 if(this.prev) this.prev.remove();
                 this.isOpen= false;

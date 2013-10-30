@@ -17,7 +17,7 @@ define(
 
             update : function(frameIndex, rect) {
                 var frame = this.animation[frameIndex];
-                console.log(frameIndex)
+
                 if(!frame) return;
                 var x = (rect.x * frame.x);
                 var y = (rect.y * frame.y);

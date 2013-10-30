@@ -22,11 +22,13 @@ require.config({
         'three' : 'libs/three',
         'pablo' : 'libs/pablo.min',
         'hammer' : 'libs/jquery.hammer',
-        'fabric' : 'libs/fabric.require'
+        'fabric' : 'libs/fabric.min'
 
 	},
  
 	shim: {
+
+
         'facebook' : {
             exports: 'FB'
         },
@@ -36,13 +38,15 @@ require.config({
         },
 
 		'backbone': {
-			deps: ['underscore', 'jquery', 'touchwipe', 'hammer'],
+			deps: ['underscore', 'jquery', 'touchwipe', 'hammer' ],
 			exports: 'Backbone'
 		},
+
         'touchwipe' : {
             deps: ['jquery'],
             exports: 'touchwipe'
         },
+
 
         'ui' : {
             deps: ['jquery'],
@@ -61,13 +65,12 @@ require.config({
  
 require([
     'backbone',
-    'underscore',
     'view/App',
-    'raf',
+    'raf'
 
 ],
 
-    function( Backbone, _, App ) {
+    function(Backbone, App ) {
 
         var app;
 

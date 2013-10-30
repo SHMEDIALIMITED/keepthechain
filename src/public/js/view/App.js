@@ -3,25 +3,29 @@
  */
 define(
     [
-        'view/Editor',
+
+
         'view/Navigation',
         'model/Animations',
         'view/Title',
         'view/Sketch',
         'model/SketchCollection',
         'controller/ScrollController',
+        'view/Editor',
         'backbone'
     ],
 
     function(
 
-        Editor,
+
         Navigation,
         Animations,
         Title,
         Sketch,
         SketchCollection,
-        ScrollController
+        ScrollController,
+        Editor
+
 
     ) {
 
@@ -81,6 +85,8 @@ define(
             },
 
             _sketchesAdded : function(sketchModel) {
+
+
 
                 if(sketchViews.length == 0) {
                     sketchViews.push(new Title({animation:Animations.title}));
