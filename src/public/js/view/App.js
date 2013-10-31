@@ -90,7 +90,7 @@ define(
             },
 
             _sketchesAdded : function(sketchModel) {
-                sketchModel.set('animation', Animations.horizontal);
+                sketchModel.set('animation', Animations.sketches[Math.round(Math.random())]);
                 var sketch = new Sketch(svg, sketchModel);
                 sketch.update(1, rect);
                 sketch.prev = sketchViews[sketchViews.length - 1];

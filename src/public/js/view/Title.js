@@ -12,7 +12,7 @@ define(
             el : '#title',
 
             initialize : function(options) {
-                this.animation = options.animation;
+                this.animation = options.animation.frames;
             },
 
             update : function(frameIndex, rect) {

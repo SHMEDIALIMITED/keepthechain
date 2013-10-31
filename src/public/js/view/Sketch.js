@@ -12,8 +12,8 @@ define(
         var Sketch = function(parent, model) {
 
 
-            this.animation = model.get('animation');
-            this.direction = model.get('direction');
+            this.animation = model.get('animation').frames;
+            this.direction = model.get('animation').directions[Math.round(Math.random())];
             this.parent = parent;
             this.closed = model.get('closed');
             this.opened = model.get('open');
@@ -24,7 +24,7 @@ define(
             this.open();
 
 
-            console.log(this.graphic)
+            console.log(this.direction)
             //console.log(this.graphic)
 
 
@@ -44,7 +44,13 @@ define(
                 if(!frame) return;
                 var x = (rect.x * frame.x);
                 var y = (rect.y * frame.y);
-                this.graphic.css('-webkit-transform', 'translate3d(' + (x * this.direction.pos) + 'px, ' + (y * this.direction.pos)+ 'px, 0px) scale3d(' + (frame.scale * this.direction.scale) + ', ' + (frame.scale * this.direction.scale) + ', 1)');
+
+
+                var transform = 'translate3d(' + (x * this.direction.pos) + 'px, ' + (y * this.direction.pos)+ 'px, 0px) ';
+                transform += 'scale3d(' + (frame.scale * this.direction.scaleX) + ', ' + (frame.scale * this.direction.scaleY) + ', 1) ';
+                transform += 'rotate(' + this.direction.rotation + ')';
+
+                this.graphic.css('-webkit-transform', transform);
             },
 
             close : function() {
