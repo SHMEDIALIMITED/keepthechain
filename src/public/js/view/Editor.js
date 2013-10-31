@@ -3,10 +3,11 @@
  */
 define([
 
+    'model/SketchModel',
     'backbone'
     
 
-], function() {
+], function(SketchModel) {
 
 
     /* build: `node build.js modules=text,cufon,gestures,easing,parser,freedrawing,interaction,serialization,image_filters,gradient,pattern,shadow,node` */
@@ -9661,8 +9662,9 @@ define([
              * @param {fabric.Canvas} canvas
              * @return {fabric.PencilBrush} Instance of a pencil brush
              */
-            initialize: function(canvas) {
+            initialize: function(canvas, container) {
                 this.canvas = canvas;
+                this.container = container;
                 this._points = [ ];
             },
 
@@ -9902,9 +9904,9 @@ define([
                 this.canvas.contextTop.arc(originLeft, originTop, 3, 0, Math.PI * 2, false);
 
                 var path = this.createPath(pathData);
-                path.set({ left: originLeft, top: originTop });
+                path.set({ left: originLeft - this.container.left, top: originTop - this.container.top });
 
-                this.canvas.add(path);
+                this.container.add(path);
                 path.setCoords();
 
                 this.canvas.clearContext(this.canvas.contextTop);
@@ -20367,14 +20369,20 @@ define([
     })();
 
     var canvas;
+    var container;
+    var center;
 
     var Editor = Backbone.View.extend({
 
         el : '#editor',
 
+        events : {
+            'mousedown .save-btn' : '_save'
+        },
+
         initialize : function() {
 
-
+            _.bindAll(this, '_save');
 
             canvas = new fabric.Canvas('c', {
                 isDrawingMode: true,
@@ -20382,10 +20390,22 @@ define([
             });
 
 
+            container = new fabric.Group();
 
-            canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas);
+            center = new fabric.Circle({
+                radius: 100,
+                fill: '#f00'
+            });
+
+            container.add(center);
 
 
+            canvas.add(container);
+
+
+            canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas, container);
+
+            canvas.freeDrawingBrush.width = 10;
 
 
 
@@ -20394,8 +20414,21 @@ define([
 
         },
 
+        _save : function() {
+            container.remove(center);
+            this.model = new SketchModel();
+            this.model.set('open', container.toSVG());
+            this.model.set('closed', container.toSVG());
+            this.model.save(function() {
+                console/log('SAVED')
+            });
+        },
+
         show : function() {
             this.$el.show();
+
+
+            console.log(this.model);
         },
 
         resize : function(rect) {
@@ -20403,7 +20436,10 @@ define([
 
             canvas.setWidth(rect.width);
             canvas.setHeight(rect.height);
+            container.setLeft(rect.x);
+            container.setTop(rect.y);
             //canvas.renderAll();
+
         }
     });
 

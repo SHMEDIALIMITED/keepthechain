@@ -17,9 +17,9 @@ define(
             this.parent = parent;
             this.closed = model.get('closed');
             this.opened = model.get('open');
-            this.el = Pablo('<g display="inline"></g>');
+            this.el = Pablo(this.opened);
 
-            this.graphic = Pablo('<g display="inline">' + this.opened  + '</g>').appendTo(this.el)
+            this.graphic = this.el.find('g');
 
 
             this.isOpen = false;
