@@ -7,12 +7,19 @@
 @import "compass/css3/transform";
 @import "compass/css3/transition";
 @import "mixins/animation";
+@import "compass/css3";
 @import "mixins/pointer-events";
 
 $pink-dark  :   #E5005B;
 $pink-light :   #FF63A1;
 $yellow     :   #F3FF23;
 
+$default-box-shadow-blur:  30px;
+$default-box-shadow-color:  rgba(100,100,100,0.1);
+
+* {
+    @include box-sizing(border-box);
+}
 
 html, body {
     width: 100%;
@@ -69,6 +76,7 @@ svg {
 @import "nav";
 @import "info";
 @import "editor";
+@import "popup";
 
 
 

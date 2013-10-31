@@ -3,6 +3,7 @@
  */
 define([
 
+    'view/Popup',
     'view/BrushMenu',
     'view/ColorMenu',
     'model/SketchModel',
@@ -11,6 +12,7 @@ define([
 
 ], function(
 
+        Popup,
         BrushMenu,
         ColorMenu,
         SketchModel
@@ -20380,18 +20382,9 @@ define([
     var container;
     var center;
 
-
-    var  colors = [
-        {code: '#ffffff'},
-        {code: '#000000'},
-        {code: '#ff0000'},
-        {code: '#ffff00'},
-        {code: '#00ffff'},
-        {code: '#0000ff'}
-    ];
-
     var colorPicker;
     var widthPicker;
+    var popup;
 
     var Editor = Backbone.View.extend({
 
@@ -20441,6 +20434,8 @@ define([
 
             widthPicker = new BrushMenu({ el: this.$el.find('.brush-menu')});
             widthPicker.on('selected', _.bind(this._changeBrush, this));
+
+            popup = new Popup({el:this.$el.find('.popup') });
 
 
             canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas, container);
@@ -20493,45 +20488,50 @@ define([
             canvas.isDrawingMode = false;
         },
 
-        _save : function() {
-
-
-
-
-
-
-
+        _export : function() {
             var objects = canvas.getObjects()
+            var i = objects.length;
+            var obj;
+
+            var origin = {x:center.left, y :center.top };
+
+            while(--i > -1) {
+                obj = objects[i];
+                console.log('HERE1', obj.left);
+                obj.left -= origin.x;
+                obj.top -= origin.y;
+            }
+
+            canvas.remove(center);
+            var svg = Pablo(canvas.toSVG({suppressPreamble: true}));
+            canvas.add(center);
+
             var i = objects.length;
             var obj;
             while(--i > -1) {
                 obj = objects[i];
-                obj.left -= center.left;
-                obj.top -= center.top;
-                //container.add(obj);
+                obj.left += origin.x;
+                obj.top += origin.y;
+                console.log('HERE4', obj.x, origin.y);
+
             }
 
             canvas.remove(center);
+            return svg.find('g').markup();
+        },
 
+        _save : function() {
 
-            var svg = Pablo(canvas.toSVG({suppressPreamble: true}));
-
-            console.log(svg.find('g').markup())
-
-            var open = Pablo(svg.find('g')[0]).markup();
-
-
-            this.model = new SketchModel();
-
-//            console.log(Pablo(container.toSVG()).find('path').each(function(i, ) {
-//
-//            }));
-//            return
-            this.model.set('open', svg.find('g').markup());
-            this.model.set('closed', svg.find('g').markup());
-            this.model.save(function() {
-                console/log('SAVED')
-            });
+            if(!this.model) {
+                this.model = new SketchModel();
+                this.model.set('open', this._export())
+                popup.show();
+            } else {
+                this.model.set('closed', this._export())
+                this.model.save(function() {
+                    console/log('SAVED')
+                });
+            }
         },
 
         show : function() {

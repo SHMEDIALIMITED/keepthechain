@@ -8,6 +8,13 @@
     background-color: $pink-light;
 }
 
+.label-btn {
+    @extend .btn;
+    padding: 20px;
+    text-align: center;
+    color: #fff;
+}
+
 .icon-btn {
     @extend .btn;
     display: block;
