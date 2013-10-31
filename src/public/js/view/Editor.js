@@ -20395,7 +20395,8 @@ define([
             'mousedown .move-btn' : '_move',
             'mousedown .brush-btn' : '_brush',
             'mousedown .fill-btn' : '_fill',
-            'mousedown .eraser-btn' : '_eraser'
+            'mousedown .eraser-btn' : '_eraser',
+            'mousedown .delete-btn' : '_delete'
         },
 
         initialize : function(options) {
@@ -20468,6 +20469,23 @@ define([
             canvas.freeDrawingBrush.color = color;
         },
 
+        _delete : function() {
+            this.setState('delete');
+
+
+            canvas.isDrawingMode = false;
+            canvas.remove(canvas.getActiveObject());
+//            var objects = canvas.getObjects();
+//            var i = objects.length;
+//            var obj;
+//            while(--i > -1) {
+//                obj = objects[i];
+//                if(obj.selected) {
+//                    canvas.remove(obj);
+//                }
+//            }
+        },
+
         _brush : function() {
             this.setState('brush');
             canvas.isDrawingMode = true;
@@ -20512,8 +20530,6 @@ define([
                 obj = objects[i];
                 obj.left += origin.x;
                 obj.top += origin.y;
-                console.log('HERE4', obj.x, origin.y);
-
             }
 
             canvas.remove(center);

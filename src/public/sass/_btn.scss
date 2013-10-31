@@ -47,6 +47,11 @@
     background-image: url('../img/icons/eraser.svg');
 }
 
+.delete-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/delete.svg');
+}
+
 .brush-btn {
     @extend .icon-btn;
     background-image: url('../img/icons/line.svg');

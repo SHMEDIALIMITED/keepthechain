@@ -111,7 +111,7 @@ nav ul li {
 }
 
 /* line 1, ../sass/_btn.scss */
-.btn, .label-btn, .icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .back-btn {
+.btn, .label-btn, .icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .delete-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .back-btn {
   background-color: #e5005b;
   cursor: pointer;
   -webkit-transition: background-color 0.5s;
@@ -121,7 +121,7 @@ nav ul li {
 }
 
 /* line 7, ../sass/_btn.scss */
-.btn:hover, .label-btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .save-btn:hover, .eraser-btn:hover, .brush-btn:hover, .brush-btn-thin:hover, .brush-btn-medium:hover, .brush-btn-thick:hover, .move-btn:hover, .fill-btn:hover, .color-btn:hover, .back-btn:hover {
+.btn:hover, .label-btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .save-btn:hover, .eraser-btn:hover, .delete-btn:hover, .brush-btn:hover, .brush-btn-thin:hover, .brush-btn-medium:hover, .brush-btn-thick:hover, .move-btn:hover, .fill-btn:hover, .color-btn:hover, .back-btn:hover {
   background-color: #ff63a1;
 }
 
@@ -133,7 +133,7 @@ nav ul li {
 }
 
 /* line 18, ../sass/_btn.scss */
-.icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn {
+.icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .delete-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn {
   display: block;
   background-size: 50%;
   background-position: center;
@@ -165,40 +165,45 @@ nav ul li {
 }
 
 /* line 50, ../sass/_btn.scss */
+.delete-btn {
+  background-image: url("../img/icons/delete.svg");
+}
+
+/* line 55, ../sass/_btn.scss */
 .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick {
   background-image: url("../img/icons/line.svg");
 }
 
-/* line 55, ../sass/_btn.scss */
+/* line 60, ../sass/_btn.scss */
 .brush-btn-thin {
   background-size: 30%;
 }
 
-/* line 60, ../sass/_btn.scss */
+/* line 65, ../sass/_btn.scss */
 .brush-btn-medium {
   background-size: 50%;
 }
 
-/* line 65, ../sass/_btn.scss */
+/* line 70, ../sass/_btn.scss */
 .brush-btn-thick {
   background-size: 65%;
 }
 
-/* line 70, ../sass/_btn.scss */
+/* line 75, ../sass/_btn.scss */
 .move-btn {
   background-image: url("../img/icons/move.svg");
 }
 
-/* line 76, ../sass/_btn.scss */
+/* line 81, ../sass/_btn.scss */
 .fill-btn {
   background-image: url("../img/icons/fill.svg");
 }
 
-/* line 81, ../sass/_btn.scss */
+/* line 86, ../sass/_btn.scss */
 .color-btn {
   position: relative;
 }
-/* line 84, ../sass/_btn.scss */
+/* line 89, ../sass/_btn.scss */
 .color-btn span {
   display: block;
   border-style: solid;
@@ -212,45 +217,45 @@ nav ul li {
   margin-left: -11px;
   margin-top: -11px;
 }
-/* line 99, ../sass/_btn.scss */
+/* line 104, ../sass/_btn.scss */
 .color-btn span.black {
   background-color: #000;
 }
-/* line 100, ../sass/_btn.scss */
+/* line 105, ../sass/_btn.scss */
 .color-btn span.white {
   background-color: #fff;
 }
-/* line 101, ../sass/_btn.scss */
+/* line 106, ../sass/_btn.scss */
 .color-btn span.red {
   background-color: #f00;
 }
-/* line 102, ../sass/_btn.scss */
+/* line 107, ../sass/_btn.scss */
 .color-btn span.orange {
   background-color: #EA5B0C;
 }
-/* line 103, ../sass/_btn.scss */
+/* line 108, ../sass/_btn.scss */
 .color-btn span.yellow {
   background-color: #FFDE00;
 }
-/* line 104, ../sass/_btn.scss */
+/* line 109, ../sass/_btn.scss */
 .color-btn span.green {
   background-color: #00983A;
 }
-/* line 105, ../sass/_btn.scss */
+/* line 110, ../sass/_btn.scss */
 .color-btn span.blue {
   background-color: #27348B;
 }
-/* line 106, ../sass/_btn.scss */
+/* line 111, ../sass/_btn.scss */
 .color-btn span.purple {
   background-color: #82368C;
 }
 
-/* line 111, ../sass/_btn.scss */
+/* line 116, ../sass/_btn.scss */
 a.selected {
   background-color: #ff63a1 !important;
 }
 
-/* line 116, ../sass/_btn.scss */
+/* line 121, ../sass/_btn.scss */
 .back-btn {
   display: block;
   height: 40px;
