@@ -17,9 +17,15 @@ define(
             this.parent = parent;
             this.closed = model.get('closed');
             this.opened = model.get('open');
-            this.el = Pablo(this.opened);
+            this.el = Pablo('<g><g class="sketch"></g></g>');
 
-            this.graphic = this.el.find('g');
+            this.graphic = this.el.find('.sketch');
+
+            this.open();
+
+
+            console.log(this.graphic)
+            //console.log(this.graphic)
 
 
             this.isOpen = false;

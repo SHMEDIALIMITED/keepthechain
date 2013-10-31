@@ -20437,7 +20437,7 @@ define([
 
 
 
-            canvas.remove(center);
+
 
 
 
@@ -20448,9 +20448,17 @@ define([
                 obj = objects[i];
                 obj.left -= center.left;
                 obj.top -= center.top;
-                container.add(obj);
+                //container.add(obj);
             }
 
+            canvas.remove(center);
+
+
+            var svg = Pablo(canvas.toSVG({suppressPreamble: true}));
+
+            console.log(svg.find('g').markup())
+
+            var open = Pablo(svg.find('g')[0]).markup();
 
 
             this.model = new SketchModel();
@@ -20459,8 +20467,8 @@ define([
 //
 //            }));
 //            return
-            this.model.set('open', container.toSVG());
-            this.model.set('closed', container.toSVG());
+            this.model.set('open', svg.find('g').markup());
+            this.model.set('closed', svg.find('g').markup());
             this.model.save(function() {
                 console/log('SAVED')
             });
