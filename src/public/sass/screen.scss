@@ -30,12 +30,15 @@ html, body {
 }
 
 footer {
+    position: fixed;
+    bottom: 0px;
     font-size: 10px;
     color: #000;
+    width: 100%;
     p {
         float: right;
         padding-top: 20px;
-        padding-right: 30px;
+        padding-right: 10px;
     }
     #license {
         font-size: 7px;
