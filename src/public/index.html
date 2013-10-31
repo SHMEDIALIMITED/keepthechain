@@ -57,15 +57,55 @@
                 <li>
                     <a class="move-btn" title="Pen" target="_self">Pen</a>
                 </li>
-                <li>
-                    <a class="brush-btn" title="Pen" target="_self">Pen</a>
+                <li class="brush-menu">
+                    <a class="brush-btn menu-trigger" title="Brush" target="_self">Brush</a>
+                    <ul>
+                        <li>
+                            <a class="btn brush-btn-thin" title="Thin" data-value="8">Thin Brush</a>
+                        </li>
+                        <li>
+                            <a class="btn brush-btn-medium" title="Medium" data-value="16">Medium Brush</a>
+                        </li>
+                        <li>
+                            <a class="btn brush-btn-thick" title="Thick" data-value="26">Thick Brush</a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a class="fill-btn" title="Eraser" target="_self">Eraser</a>
+                <li class="color-menu">
+                    <a class="color-btn menu-trigger" title="Color" target="_self"><span class="black"></span></a>
+                    <ul>
+                        <li>
+                            <a class="color-btn" title="Black" data-value="#000000"><span class="black"></span></a>
+                        </li>
+                        <li>
+                            <a class="color-btn" title="White" data-value="#ffffff"><span class="white"></span></a>
+                        </li>
+                        <li>
+                            <a class="color-btn" title="Red" data-value="#ff0000"><span class="red"></span></a>
+                        </li>
+                        <li>
+                            <a class="color-btn" title="Orange" data-value="#EA5B0C"><span class="orange"></span></a>
+                        </li>
+                        <li>
+                            <a class="color-btn" title="Yellow" data-value="#FFDE00"><span class="yellow"></span></a>
+                        </li>
+                        <li>
+                            <a class="color-btn" title="Green" data-value="#00983A"><span class="green"></span></a>
+                        </li>
+                        <li>
+                            <a class="color-btn" title="Blue" data-value="#27348B"><span class="blue"></span></a>
+                        </li>
+                        <li>
+                            <a class="color-btn" title="Purple" data-value="#82368C"><span class="purple"></span></a>
+                        </li>
+                    </ul>
                 </li>
-                <li>
-                    <a class="eraser-btn" title="Color" target="_self">Color</a>
-                </li>
+                <!--<li>-->
+                    <!--<a class="fill-btn" title="Eraser" target="_self">Eraser</a>-->
+                <!--</li>-->
+                <!--<li>-->
+                    <!--<a class="eraser-btn" title="Color" target="_self">Color</a>-->
+                <!--</li>-->
             </ul>
             <canvas id="c"></canvas>
         </section>

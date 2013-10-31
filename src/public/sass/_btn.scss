@@ -45,9 +45,25 @@
     background-image: url('../img/icons/line.svg');
 }
 
+.brush-btn-thin {
+    @extend .brush-btn;
+    background-size: 30%;
+}
+
+.brush-btn-medium {
+    @extend .brush-btn;
+    background-size: 50%;
+}
+
+.brush-btn-thick {
+    @extend .brush-btn;
+    background-size: 65%;
+}
+
 .move-btn {
     @extend .icon-btn;
     background-image: url('../img/icons/move.svg');
+
 }
 
 .fill-btn {
@@ -55,6 +71,39 @@
     background-image: url('../img/icons/fill.svg');
 }
 
+.color-btn {
+    @extend .icon-btn;
+    position: relative;
+    span {
+        display: block;
+        border-style: solid;
+        border-width: 0px;
+
+        border-radius: 20px;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -11px;
+        margin-top:-11px;
+    }
+
+    span.black { background-color: #000; }
+    span.white { background-color: #fff; }
+    span.red { background-color: #f00; }
+    span.orange { background-color: #EA5B0C; }
+    span.yellow { background-color: #FFDE00; }
+    span.green { background-color: #00983A; }
+    span.blue { background-color: #27348B; }
+    span.purple { background-color: #82368C; }
+}
+
+
+
+a.selected {
+    background-color: $pink-light!important;
+}
 
 
 .back-btn {

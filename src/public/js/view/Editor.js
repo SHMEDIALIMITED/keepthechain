@@ -3,11 +3,19 @@
  */
 define([
 
+    'view/BrushMenu',
+    'view/ColorMenu',
     'model/SketchModel',
     'backbone'
     
 
-], function(SketchModel) {
+], function(
+
+        BrushMenu,
+        ColorMenu,
+        SketchModel
+
+    ) {
 
 
     /* build: `node build.js modules=text,cufon,gestures,easing,parser,freedrawing,interaction,serialization,image_filters,gradient,pattern,shadow,node` */
@@ -20372,6 +20380,19 @@ define([
     var container;
     var center;
 
+
+    var  colors = [
+        {code: '#ffffff'},
+        {code: '#000000'},
+        {code: '#ff0000'},
+        {code: '#ffff00'},
+        {code: '#00ffff'},
+        {code: '#0000ff'}
+    ];
+
+    var colorPicker;
+    var widthPicker;
+
     var Editor = Backbone.View.extend({
 
         el : '#editor',
@@ -20379,7 +20400,9 @@ define([
         events : {
             'mousedown .save-btn' : '_save',
             'mousedown .move-btn' : '_move',
-            'mousedown .brush-btn' : '_brush'
+            'mousedown .brush-btn' : '_brush',
+            'mousedown .fill-btn' : '_fill',
+            'mousedown .eraser-btn' : '_eraser'
         },
 
         initialize : function(options) {
@@ -20398,6 +20421,7 @@ define([
 
             center = new fabric.Circle({
                 id: 'center',
+                selectable : false,
                 left: options.rect.x,
                 top: options.rect.y,
                 radius: 50,
@@ -20409,7 +20433,14 @@ define([
             canvas.add(center);
 
 
+            this.$btns = this.$el.find('a');
 
+
+            colorPicker = new ColorMenu({el: this.$el.find('.color-menu')});
+            colorPicker.on('selected', _.bind(this._changeColor, this));
+
+            widthPicker = new BrushMenu({ el: this.$el.find('.brush-menu')});
+            widthPicker.on('selected', _.bind(this._changeBrush, this));
 
 
             canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas, container);
@@ -20423,13 +20454,42 @@ define([
 
         },
 
+        setState : function(state) {
+            var selector = state + '-btn';
+            this.$btns.each(function(i, btn) {
+                var $btn = $(btn)
+                $btn.removeClass('selected');
+                console.log($btn)
+                if($btn.hasClass(selector)) $btn.addClass('selected');
+
+            });
+        },
+
+        _changeBrush : function(width) {
+            canvas.freeDrawingBrush.width = width;
+        },
+
+        _changeColor : function(color) {
+            canvas.freeDrawingBrush.color = color;
+        },
+
         _brush : function() {
-            console.log(canvas.getObjects());
-            //canvas.isDrawingMode = true;
+            this.setState('brush');
+            canvas.isDrawingMode = true;
         },
 
         _move : function() {
-            console.log('Move');
+            this.setState('move');
+            canvas.isDrawingMode = false;
+        },
+
+        _fill : function() {
+            this.setState('fill');
+            canvas.isDrawingMode = false;
+        },
+
+        _eraser : function() {
+            this.setState('eraser');
             canvas.isDrawingMode = false;
         },
 

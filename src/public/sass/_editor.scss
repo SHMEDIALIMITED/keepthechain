@@ -24,6 +24,31 @@
 
         li {
             margin-bottom: 1px;
+
+            ul {
+
+                margin-left: 41px;
+                width: 350px;
+
+                li {
+                    display: block;
+                    float: left;
+                }
+            }
+
+
+        }
+
+        li.color-menu {
+            ul{
+                top : 123px;
+            }
+        }
+
+        li.brush-menu {
+            ul{
+                top : 82px;
+            }
         }
     }
 
