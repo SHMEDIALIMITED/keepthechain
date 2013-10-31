@@ -129,7 +129,7 @@ svg {
 }
 
 /* line 1, ../sass/_btn.scss */
-.btn, .icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .line-btn, .move-btn, .fill-btn, .back-btn {
+.btn, .icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .brush-btn, .move-btn, .fill-btn, .back-btn {
   background-color: #e5005b;
   cursor: pointer;
   -webkit-transition: background-color 0.5s;
@@ -139,12 +139,12 @@ svg {
 }
 
 /* line 7, ../sass/_btn.scss */
-.btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .save-btn:hover, .eraser-btn:hover, .line-btn:hover, .move-btn:hover, .fill-btn:hover, .back-btn:hover {
+.btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .save-btn:hover, .eraser-btn:hover, .brush-btn:hover, .move-btn:hover, .fill-btn:hover, .back-btn:hover {
   background-color: #ff63a1;
 }
 
 /* line 11, ../sass/_btn.scss */
-.icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .line-btn, .move-btn, .fill-btn {
+.icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .brush-btn, .move-btn, .fill-btn {
   display: block;
   background-size: 50%;
   background-position: center;
@@ -176,7 +176,7 @@ svg {
 }
 
 /* line 43, ../sass/_btn.scss */
-.line-btn {
+.brush-btn {
   background-image: url("../img/icons/line.svg");
 }
 

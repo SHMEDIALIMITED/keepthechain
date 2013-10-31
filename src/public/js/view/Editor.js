@@ -9904,9 +9904,9 @@ define([
                 this.canvas.contextTop.arc(originLeft, originTop, 3, 0, Math.PI * 2, false);
 
                 var path = this.createPath(pathData);
-                path.set({ left: originLeft - this.container.left, top: originTop - this.container.top });
+                path.set({ left: originLeft, top: originTop });
 
-                this.container.add(path);
+                this.canvas.add(path);
                 path.setCoords();
 
                 this.canvas.clearContext(this.canvas.contextTop);
@@ -20377,12 +20377,16 @@ define([
         el : '#editor',
 
         events : {
-            'mousedown .save-btn' : '_save'
+            'mousedown .save-btn' : '_save',
+            'mousedown .move-btn' : '_move',
+            'mousedown .brush-btn' : '_brush'
         },
 
-        initialize : function() {
+        initialize : function(options) {
 
             _.bindAll(this, '_save');
+            _.bindAll(this, '_move');
+            _.bindAll(this, '_brush');
 
             canvas = new fabric.Canvas('c', {
                 isDrawingMode: true,
@@ -20393,14 +20397,19 @@ define([
             container = new fabric.Group();
 
             center = new fabric.Circle({
-                radius: 100,
+                id: 'center',
+                left: options.rect.x,
+                top: options.rect.y,
+                radius: 50,
                 fill: '#f00'
             });
 
-            container.add(center);
+            console.log(center);
+
+            canvas.add(center);
 
 
-            canvas.add(container);
+
 
 
             canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas, container);
@@ -20414,9 +20423,42 @@ define([
 
         },
 
+        _brush : function() {
+            console.log(canvas.getObjects());
+            //canvas.isDrawingMode = true;
+        },
+
+        _move : function() {
+            console.log('Move');
+            canvas.isDrawingMode = false;
+        },
+
         _save : function() {
-            container.remove(center);
+
+
+
+            canvas.remove(center);
+
+
+
+            var objects = canvas.getObjects()
+            var i = objects.length;
+            var obj;
+            while(--i > -1) {
+                obj = objects[i];
+                obj.left -= center.left;
+                obj.top -= center.top;
+                container.add(obj);
+            }
+
+
+
             this.model = new SketchModel();
+
+//            console.log(Pablo(container.toSVG()).find('path').each(function(i, ) {
+//
+//            }));
+//            return
             this.model.set('open', container.toSVG());
             this.model.set('closed', container.toSVG());
             this.model.save(function() {
@@ -20436,8 +20478,10 @@ define([
 
             canvas.setWidth(rect.width);
             canvas.setHeight(rect.height);
-            container.setLeft(rect.x);
-            container.setTop(rect.y);
+            //container.setLeft(rect.x);
+            //container.setTop(rect.y);
+
+            console.log(canvas.getCenter())
             //canvas.renderAll();
 
         }

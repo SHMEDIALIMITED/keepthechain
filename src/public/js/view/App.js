@@ -56,6 +56,8 @@ define(
                 rect = {};
                 sketchViews = [];
 
+                sketchViews.push(new Title({animation:Animations.title}));
+
                 sketcheCollection = new SketchCollection();
                 sketcheCollection.on('add', _.bind(this._sketchesAdded, this));
                 sketcheCollection.fetch(
@@ -70,13 +72,16 @@ define(
                 navigation.on('navigate', _.bind(this._onStateChange));
                 navigation.show();
 
-                editor = new Editor();
+
 
 
                 svg = Pablo('svg');
 
                 $(window).resize(_.bind(this._resize));
                 this._resize();
+
+
+
 
             },
 
@@ -85,24 +90,20 @@ define(
             },
 
             _sketchesAdded : function(sketchModel) {
+                sketchModel.set('animation', Animations.horizontal);
+                var sketch = new Sketch(svg, sketchModel);
+                sketch.update(1, rect);
+                sketch.prev = sketchViews[sketchViews.length - 1];
+                sketchViews.push(sketch);
 
-
-
-                if(sketchViews.length == 0) {
-                    sketchViews.push(new Title({animation:Animations.title}));
-                } else {
-                    sketchModel.set('animation', Animations.horizontal);
-                    var sketch = new Sketch(svg, sketchModel);
-                    sketch.update(1, rect);
-                    sketch.prev = sketchViews[sketchViews.length - 1];
-                    sketchViews.push(sketch);
-                }
             },
 
 
             _onStateChange : function(newState) {
                 switch(newState) {
                     case 'edit' :
+                        if(!editor) editor = new Editor({rect:rect});
+                        editor.resize(rect)
                         editor.show();
                         break;
                 }
@@ -128,7 +129,7 @@ define(
 
                     // TODO : load more sketches
 
-                    console.log('LOAD MORE SKETCHES');
+                    console.log('LOAD MORE SKETCHES', sketchViews.length);
 
                 } else {
 
@@ -179,7 +180,7 @@ define(
                 rect.y = w.height() >> 1;
                 if(current) current.align(rect);
 
-                editor.resize(rect)
+                if(editor) editor.resize(rect)
             }
 
         });
