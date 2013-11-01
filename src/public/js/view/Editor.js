@@ -20429,7 +20429,7 @@ define([
             'mousedown .brush-btn' : '_brush',
             'mousedown .fill-btn' : '_fill',
             'mousedown .eraser-btn' : '_eraser',
-            'mousedown .delete-btn' : '_delete',
+            
             'mousedown .back-btn' : '_back',
             'mousedown .undo-btn' : '_undo',
             'mousedown .redo-btn' : '_redo'
@@ -20640,7 +20640,7 @@ define([
                     this.$upper.addClass('delete-cursor');
                     break;
 
-                case 'delete' :
+                case 'eraser' :
                     this.$upper.addClass('delete-cursor');
                     break;d
             }
@@ -20660,7 +20660,7 @@ define([
                     canvas.renderAll();
                     break;
 
-                case 'delete' :
+                case 'eraser' :
                     canvas.remove(e.target);
                     canvas.renderAll();
                     break;d
@@ -20681,7 +20681,7 @@ define([
 
             switch(tool) {
 
-                case 'delete' :
+                case 'eraser' :
                     this._hideControls();
                     canvas.hoverCursor = "url('data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA66TnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAC4AAABuAAAA4AAAAdwAAAO4AAAHcAAABuAAAAXAAAADgAAAAAAAAA///////////////////////////////////////////////////////////////////////////////////////////////////////////+D////A////gP///wD///4A///8Af//+AP///AH///wD///8B////A////wf///8='), auto";
                     break;
