@@ -14128,6 +14128,15 @@ define([
         getState : function() {
             var state = {};
             this.stateProperties.forEach(function(prop) {
+                state[prop] = this.get(prop);
+            }, this);
+            return state;
+        },
+
+
+        getOldState : function() {
+            var state = {};
+            this.stateProperties.forEach(function(prop) {
                 state[prop] = this.originalState[prop];
             }, this);
             return state;
@@ -20436,6 +20445,8 @@ define([
             _.bindAll(this, '_mouseOver');
             _.bindAll(this, '_back');
             _.bindAll(this, '_undo');
+            _.bindAll(this, '_objectModified');
+            _.bindAll(this, '_objectCreated');
 
             history = [];
 
@@ -20461,6 +20472,9 @@ define([
 
             canvas.add(center);
 
+
+            this.$undo = this.$el.find('.undo-btn');
+            this.$redo = this.$el.find('.redo-btn');
 
             this.$btns = this.$el.find('a');
             this.$upper = this.$el.find('.upper-canvas');
@@ -20512,13 +20526,27 @@ define([
             history.push({
                 type: 2,
                 reference : e.target,
-                state : e.target.getState()
+                state : e.target.getState(),
+                oldState : e.target.getOldState()
             });
 
 
+            e.target.saveState();
 
 
+
+
+
+            for(var i = 0; i < history.length; ++i) {
+                console.log(history[i].type, history[i].state.left)
+            }
             historyIndex = history.length;
+
+            if(historyIndex == 0) this.$undo.addClass('disabled');
+            else this.$undo.removeClass('disabled');
+            if(historyIndex == history.length) this.$redo.addClass('disabled');
+            else this.$redo.removeClass('disabled');
+
         },
 
 
@@ -20536,11 +20564,21 @@ define([
                 reference : e.path,
                 state : e.path.getState()
             });
+
+
             historyIndex = history.length;
 
+
+
+
+            if(historyIndex == 0) this.$undo.addClass('disabled');
+            else this.$undo.removeClass('disabled');
+            if(historyIndex == history.length) this.$redo.addClass('disabled');
+            else this.$redo.removeClass('disabled');
         },
 
         _undo : function(e) {
+
 
 
 
@@ -20551,17 +20589,21 @@ define([
             switch(action.type) {
                 case 1 :
                     canvas.remove(action.reference);
+                    action.reference.setState(action.state);
                     break;
 
                 case 2 :
 
-                    console.log('UNDO', action)
 
-
-                    action.reference.setState(action.state);
+                    action.reference.setState(action.oldState);
                     canvas.renderAll();
                     break;
             }
+
+            if(historyIndex == 0) this.$undo.addClass('disabled');
+            else this.$undo.removeClass('disabled');
+            if(historyIndex == history.length) this.$redo.addClass('disabled');
+            else this.$redo.removeClass('disabled');
 
         },
 
@@ -20572,16 +20614,20 @@ define([
             switch(action.type) {
                 case 1 :
                     canvas.add(action.reference);
+                    action.reference.setState(action.state);
                     break;
                 case 2 :
 
-                    console.log('REDO', action)
+
 
                     action.reference.setState(action.state);
                     canvas.renderAll();
                     break;
             }
-
+            if(historyIndex == 0) this.$undo.addClass('disabled');
+            else this.$undo.removeClass('disabled');
+            if(historyIndex == history.length) this.$redo.addClass('disabled');
+            else this.$redo.removeClass('disabled');
         },
 
         _mouseOver : function(e) {

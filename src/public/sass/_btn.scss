@@ -148,7 +148,10 @@
     }
 }
 
-
+.undo-btn.disabled, .redo-btn.disabled {
+    background-color: #aaa;
+    @include pointer-events(none);
+}
 
 a.selected {
     background-color: $pink-light!important;

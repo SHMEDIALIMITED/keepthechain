@@ -311,7 +311,15 @@ svg {
   margin-top: -10px;
 }
 
-/* line 153, ../sass/_btn.scss */
+/* line 151, ../sass/_btn.scss */
+.undo-btn.disabled, .redo-btn.disabled {
+  background-color: #aaa;
+  -webkit-pointer-events: none;
+  -moz-pointer-events: none;
+  pointer-events: none;
+}
+
+/* line 156, ../sass/_btn.scss */
 a.selected {
   background-color: #ff63a1 !important;
 }
