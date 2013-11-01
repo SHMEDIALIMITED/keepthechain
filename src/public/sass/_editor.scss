@@ -33,23 +33,28 @@
                 li {
                     display: block;
                     float: left;
+                    margin-right: 1px;
                 }
             }
 
 
         }
 
-        li.color-menu {
+
+        li.brush-menu {
+            margin-top: 100px;
             ul{
-                top : 123px;
+                top : 222px;
             }
         }
 
-        li.brush-menu {
+        li.color-menu {
             ul{
-                top : 82px;
+                top : 263px;
             }
         }
+
+
     }
 
 

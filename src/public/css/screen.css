@@ -361,14 +361,19 @@ nav ul li {
 #editor ul li ul li {
   display: block;
   float: left;
+  margin-right: 1px;
 }
-/* line 43, ../sass/_editor.scss */
-#editor ul li.color-menu ul {
-  top: 123px;
+/* line 44, ../sass/_editor.scss */
+#editor ul li.brush-menu {
+  margin-top: 100px;
 }
-/* line 49, ../sass/_editor.scss */
+/* line 46, ../sass/_editor.scss */
 #editor ul li.brush-menu ul {
-  top: 82px;
+  top: 222px;
+}
+/* line 52, ../sass/_editor.scss */
+#editor ul li.color-menu ul {
+  top: 263px;
 }
 
 /* line 1, ../sass/_popup.scss */

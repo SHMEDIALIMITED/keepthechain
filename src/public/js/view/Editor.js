@@ -9873,7 +9873,7 @@ define([
              */
             createPath: function(pathData) {
                 var path = new fabric.Path(pathData);
-                path.fill = null;
+                path.fill = this.fill;
                 path.stroke = this.color;
                 path.strokeWidth = this.width;
                 path.strokeLineCap = this.strokeLineCap;
@@ -20467,6 +20467,7 @@ define([
 
         _changeColor : function(color) {
             canvas.freeDrawingBrush.color = color;
+            canvas.freeDrawingBrush.fill = color;
         },
 
         _delete : function() {
