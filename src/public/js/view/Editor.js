@@ -20429,7 +20429,7 @@ define([
             'mousedown .brush-btn' : '_brush',
             'mousedown .fill-btn' : '_fill',
             'mousedown .eraser-btn' : '_eraser',
-            
+
             'mousedown .back-btn' : '_back',
             'mousedown .undo-btn' : '_undo',
             'mousedown .redo-btn' : '_redo'
@@ -20683,18 +20683,18 @@ define([
 
                 case 'eraser' :
                     this._hideControls();
-                    canvas.hoverCursor = "url('data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA66TnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAC4AAABuAAAA4AAAAdwAAAO4AAAHcAAABuAAAAXAAAADgAAAAAAAAA///////////////////////////////////////////////////////////////////////////////////////////////////////////+D////A////gP///wD///4A///8Af//+AP///AH///wD///8B////A////wf///8='), auto";
+                    canvas.hoverCursor = canvas.defaultCursor = "url('data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA66TnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAC4AAABuAAAA4AAAAdwAAAO4AAAHcAAABuAAAAXAAAADgAAAAAAAAA///////////////////////////////////////////////////////////////////////////////////////////////////////////+D////A////gP///wD///4A///8Af//+AP///AH///wD///8B////A////wf///8='), auto";
                     break;
 
 
                 case 'fill' :
                     this._hideControls();
-                    canvas.hoverCursor = "url('img/icons/fill.svg'), auto";
+                    canvas.hoverCursor = canvas.defaultCursor = "url('img/icons/fill.svg'), auto";
                     break;
 
                 case 'move' :
                     this._showControls();
-                    canvas.hoverCursor = "move";
+                    canvas.hoverCursor = canvas.defaultCursor  = "move";
                     break;
 
                 default :
