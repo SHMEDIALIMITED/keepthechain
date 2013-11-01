@@ -329,13 +329,28 @@ nav {
   position: fixed;
   top: 0px;
   left: 40px;
-  display: none;
   z-index: 10;
+  opacity: 0;
+  -webkit-transition: opacity 0.5s;
+  -moz-transition: opacity 0.5s;
+  -o-transition: opacity 0.5s;
+  transition: opacity 0.5s;
+  -webkit-pointer-events: none;
+  -moz-pointer-events: none;
+  pointer-events: none;
 }
-/* line 10, ../sass/_nav.scss */
+/* line 15, ../sass/_nav.scss */
 nav ul li {
   float: left;
   margin-right: 1px;
+}
+
+/* line 22, ../sass/_nav.scss */
+nav.show {
+  -webkit-pointer-events: all;
+  -moz-pointer-events: all;
+  pointer-events: all;
+  opacity: 1;
 }
 
 /* line 1, ../sass/_info.scss */

@@ -70,7 +70,7 @@ define(
 
                 navigation = new Navigation();
                 navigation.on('navigate', _.bind(this._onStateChange, this));
-                navigation.show();
+
 
 
 
@@ -128,6 +128,13 @@ define(
 
                 pos -= ~~(scrollController.delta);
                 pos = Math.min(Math.max(pos, 1),sketchViews.length * 960 );
+
+
+                if(pos > 100) {
+                    navigation.show();
+                } else {
+                    navigation.hide();
+                }
 
                 var index = ~~(pos / 960);
 

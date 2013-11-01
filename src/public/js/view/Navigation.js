@@ -40,7 +40,11 @@ define(
             },
 
             show : function() {
-                this.$el.show();
+                this.$el.addClass('show');
+            },
+
+            hide : function() {
+                this.$el.removeClass('show');
             }
 
         });
