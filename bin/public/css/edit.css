@@ -111,7 +111,7 @@ nav ul li {
 }
 
 /* line 1, ../sass/_btn.scss */
-.btn, .label-btn, .icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .fill-color-btn, .back-btn {
+.btn, .label-btn, .icon-btn, .plus-btn, .info-btn, .back-btn, .save-btn, .undo-btn, .redo-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .fill-color-btn {
   background-color: #e5005b;
   cursor: pointer;
   -webkit-transition: background-color 0.5s;
@@ -121,7 +121,7 @@ nav ul li {
 }
 
 /* line 7, ../sass/_btn.scss */
-.btn:hover, .label-btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .save-btn:hover, .eraser-btn:hover, .delete-btn:hover, .brush-width-btn:hover, .brush-btn:hover, .brush-btn-thin:hover, .brush-btn-medium:hover, .brush-btn-thick:hover, .move-btn:hover, .fill-btn:hover, .color-btn:hover, .fill-color-btn:hover, .back-btn:hover {
+.btn:hover, .label-btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .back-btn:hover, .save-btn:hover, .undo-btn:hover, .redo-btn:hover, .eraser-btn:hover, .delete-btn:hover, .brush-width-btn:hover, .brush-btn:hover, .brush-btn-thin:hover, .brush-btn-medium:hover, .brush-btn-thick:hover, .move-btn:hover, .fill-btn:hover, .color-btn:hover, .fill-color-btn:hover {
   background-color: #ff63a1;
 }
 
@@ -133,7 +133,7 @@ nav ul li {
 }
 
 /* line 18, ../sass/_btn.scss */
-.icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .fill-color-btn {
+.icon-btn, .plus-btn, .info-btn, .back-btn, .save-btn, .undo-btn, .redo-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .fill-color-btn {
   display: block;
   background-size: 50%;
   background-position: center;
@@ -155,60 +155,75 @@ nav ul li {
 }
 
 /* line 40, ../sass/_btn.scss */
+.back-btn {
+  background-image: url("../img/icons/back.svg");
+}
+
+/* line 45, ../sass/_btn.scss */
 .save-btn {
   background-image: url("../img/icons/save.svg");
 }
 
-/* line 45, ../sass/_btn.scss */
+/* line 50, ../sass/_btn.scss */
+.undo-btn {
+  background-image: url("../img/icons/undo.svg");
+}
+
+/* line 55, ../sass/_btn.scss */
+.redo-btn {
+  background-image: url("../img/icons/redo.svg");
+}
+
+/* line 60, ../sass/_btn.scss */
 .eraser-btn {
   background-image: url("../img/icons/eraser.svg");
 }
 
-/* line 50, ../sass/_btn.scss */
+/* line 65, ../sass/_btn.scss */
 .delete-btn {
   background-image: url("../img/icons/delete.svg");
 }
 
-/* line 55, ../sass/_btn.scss */
+/* line 70, ../sass/_btn.scss */
 .brush-width-btn {
   background-image: url("../img/icons/line.svg");
 }
 
-/* line 60, ../sass/_btn.scss */
+/* line 75, ../sass/_btn.scss */
 .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick {
   background-image: url("../img/icons/brush.svg");
 }
 
-/* line 65, ../sass/_btn.scss */
+/* line 80, ../sass/_btn.scss */
 .brush-btn-thin {
   background-size: 30%;
 }
 
-/* line 70, ../sass/_btn.scss */
+/* line 85, ../sass/_btn.scss */
 .brush-btn-medium {
   background-size: 50%;
 }
 
-/* line 75, ../sass/_btn.scss */
+/* line 90, ../sass/_btn.scss */
 .brush-btn-thick {
   background-size: 65%;
 }
 
-/* line 80, ../sass/_btn.scss */
+/* line 95, ../sass/_btn.scss */
 .move-btn {
   background-image: url("../img/icons/move.svg");
 }
 
-/* line 86, ../sass/_btn.scss */
+/* line 101, ../sass/_btn.scss */
 .fill-btn {
   background-image: url("../img/icons/fill.svg");
 }
 
-/* line 91, ../sass/_btn.scss */
+/* line 106, ../sass/_btn.scss */
 .color-btn, .fill-color-btn {
   position: relative;
 }
-/* line 94, ../sass/_btn.scss */
+/* line 109, ../sass/_btn.scss */
 .color-btn span, .fill-color-btn span {
   display: block;
   border-style: solid;
@@ -222,40 +237,40 @@ nav ul li {
   margin-left: -11px;
   margin-top: -11px;
 }
-/* line 109, ../sass/_btn.scss */
+/* line 124, ../sass/_btn.scss */
 .color-btn span.black, .fill-color-btn span.black {
   background-color: #000;
 }
-/* line 110, ../sass/_btn.scss */
+/* line 125, ../sass/_btn.scss */
 .color-btn span.white, .fill-color-btn span.white {
   background-color: #fff;
 }
-/* line 111, ../sass/_btn.scss */
+/* line 126, ../sass/_btn.scss */
 .color-btn span.red, .fill-color-btn span.red {
   background-color: #f00;
 }
-/* line 112, ../sass/_btn.scss */
+/* line 127, ../sass/_btn.scss */
 .color-btn span.orange, .fill-color-btn span.orange {
   background-color: #EA5B0C;
 }
-/* line 113, ../sass/_btn.scss */
+/* line 128, ../sass/_btn.scss */
 .color-btn span.yellow, .fill-color-btn span.yellow {
   background-color: #FFDE00;
 }
-/* line 114, ../sass/_btn.scss */
+/* line 129, ../sass/_btn.scss */
 .color-btn span.green, .fill-color-btn span.green {
   background-color: #00983A;
 }
-/* line 115, ../sass/_btn.scss */
+/* line 130, ../sass/_btn.scss */
 .color-btn span.blue, .fill-color-btn span.blue {
   background-color: #27348B;
 }
-/* line 116, ../sass/_btn.scss */
+/* line 131, ../sass/_btn.scss */
 .color-btn span.purple, .fill-color-btn span.purple {
   background-color: #82368C;
 }
 
-/* line 123, ../sass/_btn.scss */
+/* line 138, ../sass/_btn.scss */
 .fill-color-btn span {
   display: block;
   border-radius: 0px;
@@ -268,14 +283,7 @@ nav ul li {
   margin-top: -10px;
 }
 
-/* line 138, ../sass/_btn.scss */
+/* line 153, ../sass/_btn.scss */
 a.selected {
   background-color: #ff63a1 !important;
-}
-
-/* line 143, ../sass/_btn.scss */
-.back-btn {
-  display: block;
-  height: 40px;
-  padding: 5px;
 }
