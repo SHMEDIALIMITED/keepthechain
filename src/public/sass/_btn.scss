@@ -52,6 +52,11 @@
     background-image: url('../img/icons/delete.svg');
 }
 
+.brush-width-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/line.svg');
+}
+
 .brush-btn {
     @extend .icon-btn;
     background-image: url('../img/icons/line.svg');

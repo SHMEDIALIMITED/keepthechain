@@ -20382,6 +20382,8 @@ define([
     var container;
     var center;
 
+    var tool;
+
     var colorPicker;
     var widthPicker;
     var popup;
@@ -20404,6 +20406,7 @@ define([
             _.bindAll(this, '_save');
             _.bindAll(this, '_move');
             _.bindAll(this, '_brush');
+            _.bindAll(this, '_selected');
 
             canvas = new fabric.Canvas('c', {
                 isDrawingMode: true,
@@ -20443,14 +20446,29 @@ define([
 
             canvas.freeDrawingBrush.width = 10;
 
+            tool = 'brush';
 
-
-
+            canvas.on('object:selected', this._selected);
 
 
         },
 
+
+        _selected : function(e) {
+
+
+            console.log(tool)
+
+            switch(tool) {
+                case 'fill' :
+                    e.target.fill = canvas.freeDrawingBrush.fill;
+                    canvas.renderAll();
+                    break;
+            }
+        },
+
         setState : function(state) {
+            tool = state;
             var selector = state + '-btn';
             this.$btns.each(function(i, btn) {
                 var $btn = $(btn)
