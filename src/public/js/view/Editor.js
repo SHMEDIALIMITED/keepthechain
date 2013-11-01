@@ -20542,6 +20542,9 @@ define([
                 this.model = new SketchModel();
                 this.model.set('open', this._export())
                 popup.show();
+                canvas.setBackgroundImage(canvas.toDataURL(), function() {
+
+                }, {backgroundImageOpacity:0.2})
             } else {
                 this.model.set('closed', this._export())
                 this.model.save(function() {
