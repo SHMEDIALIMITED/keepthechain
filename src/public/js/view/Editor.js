@@ -20408,9 +20408,12 @@ define([
             _.bindAll(this, '_move');
             _.bindAll(this, '_brush');
             _.bindAll(this, '_selected');
+            _.bindAll(this, '_mouseDown');
+            _.bindAll(this, '_mouseOver');
 
             canvas = new fabric.Canvas('c', {
                 isDrawingMode: true,
+                perPixelTargetFind: true,
                 backgroundColor : '#eeeeee'
             });
 
@@ -20432,6 +20435,7 @@ define([
 
 
             this.$btns = this.$el.find('a');
+            this.$upper = this.$el.find('.upper-canvas');
 
 
             strokeColorPicker = new ColorMenu({el: this.$el.find('.stroke-color-menu')});
@@ -20455,15 +20459,33 @@ define([
             tool = 'brush';
 
             canvas.on('object:selected', this._selected);
+            canvas.on('mouse:down', this._mouseDown);
+            canvas.on('mouse:over', this._mouseOver);
 
 
         },
 
-
-        _selected : function(e) {
+        _mouseOver : function(e) {
 
             console.log(e)
 
+            if(!e.target || !e.target.selectable) return;
+            switch(tool) {
+                case 'fill' :
+                    this.$upper.addClass('delete-cursor');
+                    break;
+
+                case 'delete' :
+                    this.$upper.addClass('delete-cursor');
+                    break;d
+            }
+        },
+
+        _mouseDown: function(e) {
+
+            if(!e.target || !e.target.selectable) return;
+
+            canvas.bringToFront(e.target)
 
             switch(tool) {
                 case 'fill' :
@@ -20474,21 +20496,39 @@ define([
                 case 'delete' :
                     canvas.remove(e.target);
                     canvas.renderAll();
-                    break;
+                    break;d
             }
+        },
+
+
+        _selected : function(e) {
+
+
         },
 
         setState : function(state) {
             tool = state;
 
+
+
+
             switch(tool) {
 
                 case 'delete' :
-                    this.$el.addClass('delete-cursor');
+                    canvas.hoverCursor = "url('data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA66TnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAC4AAABuAAAA4AAAAdwAAAO4AAAHcAAABuAAAAXAAAADgAAAAAAAAA///////////////////////////////////////////////////////////////////////////////////////////////////////////+D////A////gP///wD///4A///8Af//+AP///AH///wD///8B////A////wf///8='), auto";
+                    break;
+
+
+                case 'fill' :
+                    canvas.hoverCursor = "url('img/icons/fill.svg'), auto";
+                    break;
+
+                case 'move' :
+                    canvas.hoverCursor = "move";
                     break;
 
                 default :
-                    this.$el.removeClass('delete-cursor');
+
                     break;
 
             }
@@ -20518,19 +20558,7 @@ define([
 
         _delete : function() {
             this.setState('delete');
-
-
             canvas.isDrawingMode = false;
-            canvas.remove(canvas.getActiveObject());
-//            var objects = canvas.getObjects();
-//            var i = objects.length;
-//            var obj;
-//            while(--i > -1) {
-//                obj = objects[i];
-//                if(obj.selected) {
-//                    canvas.remove(obj);
-//                }
-//            }
         },
 
         _brush : function() {
