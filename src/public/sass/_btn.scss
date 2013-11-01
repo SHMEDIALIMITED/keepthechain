@@ -59,7 +59,7 @@
 
 .brush-btn {
     @extend .icon-btn;
-    background-image: url('../img/icons/line.svg');
+    background-image: url('../img/icons/brush.svg');
 }
 
 .brush-btn-thin {
@@ -114,6 +114,23 @@
     span.green { background-color: #00983A; }
     span.blue { background-color: #27348B; }
     span.purple { background-color: #82368C; }
+}
+
+
+.fill-color-btn {
+    @extend .color-btn;
+
+    span {
+        display: block;
+        border-radius: 0px;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-left: -10px;
+        margin-top:-10px;
+    }
 }
 
 

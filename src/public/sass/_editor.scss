@@ -41,16 +41,22 @@
         }
 
 
-        li.brush-menu {
+        li.stroke-width-menu {
             margin-top: 100px;
             ul{
-                top : 222px;
+                top : 304px;
             }
         }
 
-        li.color-menu {
+        li.stroke-color-menu {
             ul{
-                top : 263px;
+                top : 345px;
+            }
+        }
+
+        li.fill-color-menu {
+            ul{
+                top : 386px;
             }
         }
 
@@ -58,4 +64,8 @@
     }
 
 
+}
+
+#editor.delete-cursor {
+    cursor: url('data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA66TnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAC4AAABuAAAA4AAAAdwAAAO4AAAHcAAABuAAAAXAAAADgAAAAAAAAA///////////////////////////////////////////////////////////////////////////////////////////////////////////+D////A////gP///wD///4A///8Af//+AP///AH///wD///8B////A////wf///8='), auto;
 }

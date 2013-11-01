@@ -10,7 +10,7 @@ module.exports = function(config) {
 
         create : function(req, res) {
 
-            // TODO: validate
+            // TODO: validate and authenticate
 
             var sketch = new Sketch(req.body);
             sketch.save(function(err, model) {

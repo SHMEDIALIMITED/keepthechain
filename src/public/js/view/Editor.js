@@ -20384,8 +20384,9 @@ define([
 
     var tool;
 
-    var colorPicker;
-    var widthPicker;
+    var strokeColorPicker;
+    var strokeWidthPicker;
+    var fillColorPicker;
     var popup;
 
     var Editor = Backbone.View.extend({
@@ -20433,11 +20434,14 @@ define([
             this.$btns = this.$el.find('a');
 
 
-            colorPicker = new ColorMenu({el: this.$el.find('.color-menu')});
-            colorPicker.on('selected', _.bind(this._changeColor, this));
+            strokeColorPicker = new ColorMenu({el: this.$el.find('.stroke-color-menu')});
+            strokeColorPicker.on('selected', _.bind(this._changeStrokeColor, this));
 
-            widthPicker = new BrushMenu({ el: this.$el.find('.brush-menu')});
-            widthPicker.on('selected', _.bind(this._changeBrush, this));
+            fillColorPicker = new ColorMenu({el: this.$el.find('.fill-color-menu')});
+            fillColorPicker.on('selected', _.bind(this._changeFillColor, this));
+
+            strokeWidthPicker = new BrushMenu({ el: this.$el.find('.stroke-width-menu')});
+            strokeWidthPicker.on('selected', _.bind(this._changeBrushWidth, this));
 
             popup = new Popup({el:this.$el.find('.popup') });
 
@@ -20445,6 +20449,8 @@ define([
             canvas.freeDrawingBrush = new fabric['PencilBrush'](canvas, container);
 
             canvas.freeDrawingBrush.width = 10;
+
+            canvas.fillTool = { color : '#000000'};
 
             tool = 'brush';
 
@@ -20456,12 +20462,17 @@ define([
 
         _selected : function(e) {
 
+            console.log(e)
 
-            console.log(tool)
 
             switch(tool) {
                 case 'fill' :
-                    e.target.fill = canvas.freeDrawingBrush.fill;
+                    e.target.fill = canvas.fillTool.color;
+                    canvas.renderAll();
+                    break;
+
+                case 'delete' :
+                    canvas.remove(e.target);
                     canvas.renderAll();
                     break;
             }
@@ -20469,23 +20480,40 @@ define([
 
         setState : function(state) {
             tool = state;
+
+            switch(tool) {
+
+                case 'delete' :
+                    this.$el.addClass('delete-cursor');
+                    break;
+
+                default :
+                    this.$el.removeClass('delete-cursor');
+                    break;
+
+            }
+
+
             var selector = state + '-btn';
             this.$btns.each(function(i, btn) {
                 var $btn = $(btn)
                 $btn.removeClass('selected');
-                console.log($btn)
+
                 if($btn.hasClass(selector)) $btn.addClass('selected');
 
             });
         },
 
-        _changeBrush : function(width) {
+        _changeBrushWidth : function(width) {
             canvas.freeDrawingBrush.width = width;
         },
 
-        _changeColor : function(color) {
+        _changeStrokeColor : function(color) {
             canvas.freeDrawingBrush.color = color;
-            canvas.freeDrawingBrush.fill = color;
+        },
+
+        _changeFillColor : function(color) {
+            canvas.fillTool.color = color;
         },
 
         _delete : function() {

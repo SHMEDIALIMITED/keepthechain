@@ -139,7 +139,7 @@ svg {
 }
 
 /* line 1, ../sass/_btn.scss */
-.btn, .label-btn, .icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .back-btn {
+.btn, .label-btn, .icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .fill-color-btn, .back-btn {
   background-color: #e5005b;
   cursor: pointer;
   -webkit-transition: background-color 0.5s;
@@ -149,7 +149,7 @@ svg {
 }
 
 /* line 7, ../sass/_btn.scss */
-.btn:hover, .label-btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .save-btn:hover, .eraser-btn:hover, .delete-btn:hover, .brush-width-btn:hover, .brush-btn:hover, .brush-btn-thin:hover, .brush-btn-medium:hover, .brush-btn-thick:hover, .move-btn:hover, .fill-btn:hover, .color-btn:hover, .back-btn:hover {
+.btn:hover, .label-btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .save-btn:hover, .eraser-btn:hover, .delete-btn:hover, .brush-width-btn:hover, .brush-btn:hover, .brush-btn-thin:hover, .brush-btn-medium:hover, .brush-btn-thick:hover, .move-btn:hover, .fill-btn:hover, .color-btn:hover, .fill-color-btn:hover, .back-btn:hover {
   background-color: #ff63a1;
 }
 
@@ -161,7 +161,7 @@ svg {
 }
 
 /* line 18, ../sass/_btn.scss */
-.icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn {
+.icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .fill-color-btn {
   display: block;
   background-size: 50%;
   background-position: center;
@@ -204,7 +204,7 @@ svg {
 
 /* line 60, ../sass/_btn.scss */
 .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick {
-  background-image: url("../img/icons/line.svg");
+  background-image: url("../img/icons/brush.svg");
 }
 
 /* line 65, ../sass/_btn.scss */
@@ -233,11 +233,11 @@ svg {
 }
 
 /* line 91, ../sass/_btn.scss */
-.color-btn {
+.color-btn, .fill-color-btn {
   position: relative;
 }
 /* line 94, ../sass/_btn.scss */
-.color-btn span {
+.color-btn span, .fill-color-btn span {
   display: block;
   border-style: solid;
   border-width: 0px;
@@ -251,44 +251,57 @@ svg {
   margin-top: -11px;
 }
 /* line 109, ../sass/_btn.scss */
-.color-btn span.black {
+.color-btn span.black, .fill-color-btn span.black {
   background-color: #000;
 }
 /* line 110, ../sass/_btn.scss */
-.color-btn span.white {
+.color-btn span.white, .fill-color-btn span.white {
   background-color: #fff;
 }
 /* line 111, ../sass/_btn.scss */
-.color-btn span.red {
+.color-btn span.red, .fill-color-btn span.red {
   background-color: #f00;
 }
 /* line 112, ../sass/_btn.scss */
-.color-btn span.orange {
+.color-btn span.orange, .fill-color-btn span.orange {
   background-color: #EA5B0C;
 }
 /* line 113, ../sass/_btn.scss */
-.color-btn span.yellow {
+.color-btn span.yellow, .fill-color-btn span.yellow {
   background-color: #FFDE00;
 }
 /* line 114, ../sass/_btn.scss */
-.color-btn span.green {
+.color-btn span.green, .fill-color-btn span.green {
   background-color: #00983A;
 }
 /* line 115, ../sass/_btn.scss */
-.color-btn span.blue {
+.color-btn span.blue, .fill-color-btn span.blue {
   background-color: #27348B;
 }
 /* line 116, ../sass/_btn.scss */
-.color-btn span.purple {
+.color-btn span.purple, .fill-color-btn span.purple {
   background-color: #82368C;
 }
 
-/* line 121, ../sass/_btn.scss */
+/* line 123, ../sass/_btn.scss */
+.fill-color-btn span {
+  display: block;
+  border-radius: 0px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: -10px;
+  margin-top: -10px;
+}
+
+/* line 138, ../sass/_btn.scss */
 a.selected {
   background-color: #ff63a1 !important;
 }
 
-/* line 126, ../sass/_btn.scss */
+/* line 143, ../sass/_btn.scss */
 .back-btn {
   display: block;
   height: 40px;
@@ -369,16 +382,25 @@ nav ul li {
   margin-right: 1px;
 }
 /* line 44, ../sass/_editor.scss */
-#editor ul li.brush-menu {
+#editor ul li.stroke-width-menu {
   margin-top: 100px;
 }
 /* line 46, ../sass/_editor.scss */
-#editor ul li.brush-menu ul {
-  top: 222px;
+#editor ul li.stroke-width-menu ul {
+  top: 304px;
 }
 /* line 52, ../sass/_editor.scss */
-#editor ul li.color-menu ul {
-  top: 263px;
+#editor ul li.stroke-color-menu ul {
+  top: 345px;
+}
+/* line 58, ../sass/_editor.scss */
+#editor ul li.fill-color-menu ul {
+  top: 386px;
+}
+
+/* line 69, ../sass/_editor.scss */
+#editor.delete-cursor {
+  cursor: url("data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA66TnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAC4AAABuAAAA4AAAAdwAAAO4AAAHcAAABuAAAAXAAAADgAAAAAAAAA///////////////////////////////////////////////////////////////////////////////////////////////////////////+D////A////gP///wD///4A///8Af//+AP///AH///wD///8B////A////wf///8="), auto;
 }
 
 /* line 1, ../sass/_popup.scss */
