@@ -19,7 +19,6 @@
 
     ul {
         position: absolute;
-        top:100px;
         z-index: 12;
 
         li {
@@ -42,24 +41,43 @@
 
 
         li.stroke-width-menu {
-            margin-top: 100px;
+            margin-top: 42px;
             ul{
-                top : 304px;
+                top : 205px;
             }
         }
 
         li.stroke-color-menu {
             ul{
-                top : 345px;
+                top : 246px;
             }
         }
 
         li.fill-color-menu {
             ul{
-                top : 386px;
+                top : 287px;
             }
         }
 
+
+    }
+
+    ul.side {
+
+        top:41px;
+
+    }
+
+    ul.top {
+
+        top:0px;
+        left: 41px;
+
+        li {
+            display: block;
+            float: left;
+            margin-right: 1px;
+        }
 
     }
 

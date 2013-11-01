@@ -69,7 +69,7 @@ define(
                 scrollController = new ScrollController();
 
                 navigation = new Navigation();
-                navigation.on('navigate', _.bind(this._onStateChange));
+                navigation.on('navigate', _.bind(this._onStateChange, this));
                 navigation.show();
 
 
@@ -86,6 +86,7 @@ define(
             },
 
             _run : function() {
+                scrollController.bind();
                 this._render();
             },
 
@@ -102,9 +103,16 @@ define(
             _onStateChange : function(newState) {
                 switch(newState) {
                     case 'edit' :
+                        scrollController.unbind();
                         if(!editor) editor = new Editor({rect:rect});
+                        editor.on('navigate', _.bind(this._onStateChange, this));
                         editor.resize(rect)
                         editor.show();
+                        break;
+
+                    case 'main' :
+                        if(editor) editor.hide();
+                        scrollController.bind();
                         break;
                 }
             },

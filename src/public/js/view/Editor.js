@@ -14124,6 +14124,24 @@ define([
             return this;
         },
 
+
+        getState : function() {
+            var state = {};
+            this.stateProperties.forEach(function(prop) {
+                state[prop] = this.originalState[prop];
+            }, this);
+            return state;
+        },
+
+
+        setState : function(state) {
+            this.stateProperties.forEach(function(prop) {
+                this.set(prop, state[prop]);
+            }, this);
+            return this;
+        },
+
+
         /**
          * Setups state of an object
          * @return {fabric.Object} thisArg
@@ -20378,6 +20396,9 @@ define([
 
     })();
 
+    var history;
+    var historyIndex;
+
     var canvas;
     var container;
     var center;
@@ -20399,7 +20420,10 @@ define([
             'mousedown .brush-btn' : '_brush',
             'mousedown .fill-btn' : '_fill',
             'mousedown .eraser-btn' : '_eraser',
-            'mousedown .delete-btn' : '_delete'
+            'mousedown .delete-btn' : '_delete',
+            'mousedown .back-btn' : '_back',
+            'mousedown .undo-btn' : '_undo',
+            'mousedown .redo-btn' : '_redo'
         },
 
         initialize : function(options) {
@@ -20410,6 +20434,10 @@ define([
             _.bindAll(this, '_selected');
             _.bindAll(this, '_mouseDown');
             _.bindAll(this, '_mouseOver');
+            _.bindAll(this, '_back');
+            _.bindAll(this, '_undo');
+
+            history = [];
 
             canvas = new fabric.Canvas('c', {
                 isDrawingMode: true,
@@ -20462,6 +20490,97 @@ define([
             canvas.on('mouse:down', this._mouseDown);
             canvas.on('mouse:over', this._mouseOver);
 
+            canvas.on('object:modified', this._objectModified);
+            canvas.on('path:created', this._objectCreated);
+
+
+        },
+
+        _back : function() {
+            this.trigger('navigate', 'main')
+        },
+
+
+        _objectModified : function(e) {
+
+            console.log('MOD', e);
+
+            var newHistory = history.slice(0, historyIndex);
+            history.length = 0;
+            history = newHistory;
+
+            history.push({
+                type: 2,
+                reference : e.target,
+                state : e.target.getState()
+            });
+
+
+
+
+            historyIndex = history.length;
+        },
+
+
+        _objectCreated: function(e) {
+
+            console.log('CREATE');
+
+            var newHistory = history.slice(0, historyIndex);
+            history.length = 0;
+
+            history = newHistory;
+
+            history.push({
+                type: 1,
+                reference : e.path,
+                state : e.path.getState()
+            });
+            historyIndex = history.length;
+
+        },
+
+        _undo : function(e) {
+
+
+
+            if(historyIndex == 0) return;
+            historyIndex--;
+            var action = history[historyIndex];
+
+            switch(action.type) {
+                case 1 :
+                    canvas.remove(action.reference);
+                    break;
+
+                case 2 :
+
+                    console.log('UNDO', action)
+
+
+                    action.reference.setState(action.state);
+                    canvas.renderAll();
+                    break;
+            }
+
+        },
+
+        _redo : function(e) {
+            if(historyIndex == history.length) return;
+            var action = history[historyIndex];
+            historyIndex++;
+            switch(action.type) {
+                case 1 :
+                    canvas.add(action.reference);
+                    break;
+                case 2 :
+
+                    console.log('REDO', action)
+
+                    action.reference.setState(action.state);
+                    canvas.renderAll();
+                    break;
+            }
 
         },
 
@@ -20486,6 +20605,8 @@ define([
             if(!e.target || !e.target.selectable) return;
 
             canvas.bringToFront(e.target)
+
+
 
             switch(tool) {
                 case 'fill' :
@@ -20515,15 +20636,18 @@ define([
             switch(tool) {
 
                 case 'delete' :
+                    this._hideControls();
                     canvas.hoverCursor = "url('data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA66TnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAC4AAABuAAAA4AAAAdwAAAO4AAAHcAAABuAAAAXAAAADgAAAAAAAAA///////////////////////////////////////////////////////////////////////////////////////////////////////////+D////A////gP///wD///4A///8Af//+AP///AH///wD///8B////A////wf///8='), auto";
                     break;
 
 
                 case 'fill' :
+                    this._hideControls();
                     canvas.hoverCursor = "url('img/icons/fill.svg'), auto";
                     break;
 
                 case 'move' :
+                    this._showControls();
                     canvas.hoverCursor = "move";
                     break;
 
@@ -20538,10 +20662,31 @@ define([
             this.$btns.each(function(i, btn) {
                 var $btn = $(btn)
                 $btn.removeClass('selected');
-
                 if($btn.hasClass(selector)) $btn.addClass('selected');
 
             });
+        },
+
+
+        _showControls : function() {
+            var objects = canvas.getObjects();
+            var i = objects.length, obj;
+            while( --i > -1 ){
+                obj = objects[i];
+                obj.hasControls = obj.hasBorders = true;
+            }
+        },
+
+        _hideControls : function() {
+            var objects = canvas.getObjects();
+            var i = objects.length, obj;
+            while( --i > -1 ){
+                obj = objects[i];
+                obj.hasControls = obj.hasBorders = false;
+                console.log('HIDE')
+            }
+
+            canvas.renderAll();
         },
 
         _changeBrushWidth : function(width) {
@@ -20630,9 +20775,10 @@ define([
 
         show : function() {
             this.$el.show();
+        },
 
-
-            console.log(this.model);
+        hide : function() {
+            this.$el.hide();
         },
 
         resize : function(rect) {

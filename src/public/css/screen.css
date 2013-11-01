@@ -139,7 +139,7 @@ svg {
 }
 
 /* line 1, ../sass/_btn.scss */
-.btn, .label-btn, .icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .fill-color-btn, .back-btn {
+.btn, .label-btn, .icon-btn, .plus-btn, .info-btn, .back-btn, .save-btn, .undo-btn, .redo-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .fill-color-btn {
   background-color: #e5005b;
   cursor: pointer;
   -webkit-transition: background-color 0.5s;
@@ -149,7 +149,7 @@ svg {
 }
 
 /* line 7, ../sass/_btn.scss */
-.btn:hover, .label-btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .save-btn:hover, .eraser-btn:hover, .delete-btn:hover, .brush-width-btn:hover, .brush-btn:hover, .brush-btn-thin:hover, .brush-btn-medium:hover, .brush-btn-thick:hover, .move-btn:hover, .fill-btn:hover, .color-btn:hover, .fill-color-btn:hover, .back-btn:hover {
+.btn:hover, .label-btn:hover, .icon-btn:hover, .plus-btn:hover, .info-btn:hover, .back-btn:hover, .save-btn:hover, .undo-btn:hover, .redo-btn:hover, .eraser-btn:hover, .delete-btn:hover, .brush-width-btn:hover, .brush-btn:hover, .brush-btn-thin:hover, .brush-btn-medium:hover, .brush-btn-thick:hover, .move-btn:hover, .fill-btn:hover, .color-btn:hover, .fill-color-btn:hover {
   background-color: #ff63a1;
 }
 
@@ -161,7 +161,7 @@ svg {
 }
 
 /* line 18, ../sass/_btn.scss */
-.icon-btn, .plus-btn, .info-btn, .save-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .fill-color-btn {
+.icon-btn, .plus-btn, .info-btn, .back-btn, .save-btn, .undo-btn, .redo-btn, .eraser-btn, .delete-btn, .brush-width-btn, .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick, .move-btn, .fill-btn, .color-btn, .fill-color-btn {
   display: block;
   background-size: 50%;
   background-position: center;
@@ -183,60 +183,75 @@ svg {
 }
 
 /* line 40, ../sass/_btn.scss */
+.back-btn {
+  background-image: url("../img/icons/back.svg");
+}
+
+/* line 45, ../sass/_btn.scss */
 .save-btn {
   background-image: url("../img/icons/save.svg");
 }
 
-/* line 45, ../sass/_btn.scss */
+/* line 50, ../sass/_btn.scss */
+.undo-btn {
+  background-image: url("../img/icons/undo.svg");
+}
+
+/* line 55, ../sass/_btn.scss */
+.redo-btn {
+  background-image: url("../img/icons/redo.svg");
+}
+
+/* line 60, ../sass/_btn.scss */
 .eraser-btn {
   background-image: url("../img/icons/eraser.svg");
 }
 
-/* line 50, ../sass/_btn.scss */
+/* line 65, ../sass/_btn.scss */
 .delete-btn {
   background-image: url("../img/icons/delete.svg");
 }
 
-/* line 55, ../sass/_btn.scss */
+/* line 70, ../sass/_btn.scss */
 .brush-width-btn {
   background-image: url("../img/icons/line.svg");
 }
 
-/* line 60, ../sass/_btn.scss */
+/* line 75, ../sass/_btn.scss */
 .brush-btn, .brush-btn-thin, .brush-btn-medium, .brush-btn-thick {
   background-image: url("../img/icons/brush.svg");
 }
 
-/* line 65, ../sass/_btn.scss */
+/* line 80, ../sass/_btn.scss */
 .brush-btn-thin {
   background-size: 30%;
 }
 
-/* line 70, ../sass/_btn.scss */
+/* line 85, ../sass/_btn.scss */
 .brush-btn-medium {
   background-size: 50%;
 }
 
-/* line 75, ../sass/_btn.scss */
+/* line 90, ../sass/_btn.scss */
 .brush-btn-thick {
   background-size: 65%;
 }
 
-/* line 80, ../sass/_btn.scss */
+/* line 95, ../sass/_btn.scss */
 .move-btn {
   background-image: url("../img/icons/move.svg");
 }
 
-/* line 86, ../sass/_btn.scss */
+/* line 101, ../sass/_btn.scss */
 .fill-btn {
   background-image: url("../img/icons/fill.svg");
 }
 
-/* line 91, ../sass/_btn.scss */
+/* line 106, ../sass/_btn.scss */
 .color-btn, .fill-color-btn {
   position: relative;
 }
-/* line 94, ../sass/_btn.scss */
+/* line 109, ../sass/_btn.scss */
 .color-btn span, .fill-color-btn span {
   display: block;
   border-style: solid;
@@ -250,40 +265,40 @@ svg {
   margin-left: -11px;
   margin-top: -11px;
 }
-/* line 109, ../sass/_btn.scss */
+/* line 124, ../sass/_btn.scss */
 .color-btn span.black, .fill-color-btn span.black {
   background-color: #000;
 }
-/* line 110, ../sass/_btn.scss */
+/* line 125, ../sass/_btn.scss */
 .color-btn span.white, .fill-color-btn span.white {
   background-color: #fff;
 }
-/* line 111, ../sass/_btn.scss */
+/* line 126, ../sass/_btn.scss */
 .color-btn span.red, .fill-color-btn span.red {
   background-color: #f00;
 }
-/* line 112, ../sass/_btn.scss */
+/* line 127, ../sass/_btn.scss */
 .color-btn span.orange, .fill-color-btn span.orange {
   background-color: #EA5B0C;
 }
-/* line 113, ../sass/_btn.scss */
+/* line 128, ../sass/_btn.scss */
 .color-btn span.yellow, .fill-color-btn span.yellow {
   background-color: #FFDE00;
 }
-/* line 114, ../sass/_btn.scss */
+/* line 129, ../sass/_btn.scss */
 .color-btn span.green, .fill-color-btn span.green {
   background-color: #00983A;
 }
-/* line 115, ../sass/_btn.scss */
+/* line 130, ../sass/_btn.scss */
 .color-btn span.blue, .fill-color-btn span.blue {
   background-color: #27348B;
 }
-/* line 116, ../sass/_btn.scss */
+/* line 131, ../sass/_btn.scss */
 .color-btn span.purple, .fill-color-btn span.purple {
   background-color: #82368C;
 }
 
-/* line 123, ../sass/_btn.scss */
+/* line 138, ../sass/_btn.scss */
 .fill-color-btn span {
   display: block;
   border-radius: 0px;
@@ -296,16 +311,9 @@ svg {
   margin-top: -10px;
 }
 
-/* line 138, ../sass/_btn.scss */
+/* line 153, ../sass/_btn.scss */
 a.selected {
   background-color: #ff63a1 !important;
-}
-
-/* line 143, ../sass/_btn.scss */
-.back-btn {
-  display: block;
-  height: 40px;
-  padding: 5px;
 }
 
 /* line 1, ../sass/_nav.scss */
@@ -363,42 +371,56 @@ nav ul li {
 /* line 20, ../sass/_editor.scss */
 #editor ul {
   position: absolute;
-  top: 100px;
   z-index: 12;
 }
-/* line 25, ../sass/_editor.scss */
+/* line 24, ../sass/_editor.scss */
 #editor ul li {
   margin-bottom: 1px;
 }
-/* line 28, ../sass/_editor.scss */
+/* line 27, ../sass/_editor.scss */
 #editor ul li ul {
   margin-left: 41px;
   width: 350px;
 }
-/* line 33, ../sass/_editor.scss */
+/* line 32, ../sass/_editor.scss */
 #editor ul li ul li {
   display: block;
   float: left;
   margin-right: 1px;
 }
-/* line 44, ../sass/_editor.scss */
+/* line 43, ../sass/_editor.scss */
 #editor ul li.stroke-width-menu {
-  margin-top: 100px;
+  margin-top: 42px;
 }
-/* line 46, ../sass/_editor.scss */
+/* line 45, ../sass/_editor.scss */
 #editor ul li.stroke-width-menu ul {
-  top: 304px;
+  top: 205px;
 }
-/* line 52, ../sass/_editor.scss */
+/* line 51, ../sass/_editor.scss */
 #editor ul li.stroke-color-menu ul {
-  top: 345px;
+  top: 246px;
 }
-/* line 58, ../sass/_editor.scss */
+/* line 57, ../sass/_editor.scss */
 #editor ul li.fill-color-menu ul {
-  top: 386px;
+  top: 287px;
+}
+/* line 65, ../sass/_editor.scss */
+#editor ul.side {
+  top: 41px;
+}
+/* line 71, ../sass/_editor.scss */
+#editor ul.top {
+  top: 0px;
+  left: 41px;
+}
+/* line 76, ../sass/_editor.scss */
+#editor ul.top li {
+  display: block;
+  float: left;
+  margin-right: 1px;
 }
 
-/* line 69, ../sass/_editor.scss */
+/* line 87, ../sass/_editor.scss */
 #editor.delete-cursor {
   cursor: url("data:image/x-icon;base64,AAACAAEAICACAAAAAAAwAQAAFgAAACgAAAAgAAAAQAAAAAEAAQAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAA66TnAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgAAAC4AAABuAAAA4AAAAdwAAAO4AAAHcAAABuAAAAXAAAADgAAAAAAAAA///////////////////////////////////////////////////////////////////////////////////////////////////////////+D////A////gP///wD///4A///8Af//+AP///AH///wD///8B////A////wf///8="), auto !important;
 }

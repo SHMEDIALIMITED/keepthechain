@@ -37,9 +37,24 @@
     background-image: url('../img/icons/info.svg');
 }
 
+.back-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/back.svg');
+}
+
 .save-btn {
     @extend .icon-btn;
     background-image: url('../img/icons/save.svg');
+}
+
+.undo-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/undo.svg');
+}
+
+.redo-btn {
+    @extend .icon-btn;
+    background-image: url('../img/icons/redo.svg');
 }
 
 .eraser-btn {
@@ -137,12 +152,4 @@
 
 a.selected {
     background-color: $pink-light!important;
-}
-
-
-.back-btn {
-    @extend .btn;
-    display: block;
-    height: 40px;
-    padding: 5px;
 }

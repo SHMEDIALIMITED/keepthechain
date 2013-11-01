@@ -7,12 +7,7 @@ define([
 function() {
 
     var ScrollController = function() {
-
         this.delta = 0.0;
-
-
-        $(window).bind('mousewheel', _.bind(this._mouseWheel, this));
-        $('body').hammer({drag_block_vertical: true}).on('drag', _.bind(this._hammerDrag, this));
     }
 
     ScrollController.prototype = {
@@ -32,6 +27,16 @@ function() {
 
         update : function() {
             this.delta *= 0.97;
+        },
+
+        bind : function() {
+            $(window).bind('mousewheel', _.bind(this._mouseWheel, this));
+            $('body').hammer({drag_block_vertical: true}).on('drag', _.bind(this._hammerDrag, this));
+        },
+
+        unbind : function( ){
+            $(window).unbind('mousewheel');
+            $('body').hammer().off('drag');
         }
 
     }
