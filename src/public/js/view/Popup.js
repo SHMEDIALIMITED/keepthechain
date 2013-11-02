@@ -22,7 +22,8 @@ define(
                 this.hide();
             },
 
-            show : function() {
+            show : function(msg) {
+                if(msg) this.$el.find('p').html(msg);
                 this.$el.show();
             },
 

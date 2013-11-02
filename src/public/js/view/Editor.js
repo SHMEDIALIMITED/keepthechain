@@ -20678,6 +20678,7 @@ define([
         _selected : function(e) {
 
 
+
         },
 
         setState : function(state) {
@@ -20726,7 +20727,7 @@ define([
             var i = objects.length, obj;
             while( --i > -1 ){
                 obj = objects[i];
-                obj.hasControls = obj.hasBorders = true;
+                obj.hasControls = obj.evented = obj.hasBorders = true;
             }
         },
 
@@ -20735,7 +20736,7 @@ define([
             var i = objects.length, obj;
             while( --i > -1 ){
                 obj = objects[i];
-                obj.hasControls = obj.hasBorders = false;
+                obj.hasControls = obj.evented = obj.hasBorders = false;
             }
 
             canvas.renderAll();
@@ -20826,6 +20827,8 @@ define([
 
             console.log(x,y)
 
+
+            
             if(x < 0 && x < y ){
                 return '0,1';
             }else if(x > 0 && x > y) {
@@ -20844,15 +20847,21 @@ define([
                 this.model = new SketchModel();
                 this.model.set('open', this._export());
                 this.model.set('direction', this._detectDirection());
-                popup.show();
+                popup.show('Now close its mouth. Use the eraser to erase the open mouth and draw a closed mouth instead.');
                 canvas.setBackgroundImage(canvas.toDataURL(), function() {
 
                 }, {backgroundImageOpacity:0.2})
             } else {
+                popup.show('Thanks for helping keeping the chain');
+
                 this.model.set('closed', this._export())
-                this.model.save(function() {
-                    console/log('SAVED')
-                });
+                this.model.save({}, {success:_.bind(function(model) {
+                    popup.on('confirm', _.bind(function() {
+                        popup.off('confirm');
+                        this.trigger('created', model);
+                    }, this));
+                }, this)});
+
             }
         },
 
@@ -20865,16 +20874,8 @@ define([
         },
 
         resize : function(rect) {
-
-
             canvas.setWidth(rect.width);
             canvas.setHeight(rect.height);
-            //container.setLeft(rect.x);
-            //container.setTop(rect.y);
-
-            console.log(canvas.getCenter())
-            //canvas.renderAll();
-
         }
     });
 

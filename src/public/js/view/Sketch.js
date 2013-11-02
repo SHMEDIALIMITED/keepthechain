@@ -16,7 +16,7 @@ define(
             this.direction = model.get('animation').directions[dir];
 
 
-            console.log(this.direction, dir)
+
 
             this.parent = parent;
             this.closed = model.get('closed');
@@ -28,8 +28,8 @@ define(
             this.open();
 
 
-            console.log(this.direction)
-            //console.log(this.graphic)
+
+
 
 
             this.isOpen = false;

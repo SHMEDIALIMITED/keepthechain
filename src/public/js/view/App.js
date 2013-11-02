@@ -92,9 +92,6 @@ define(
 
             _sketchesAdded : function(sketchModel) {
                 var directions = sketchModel.get('direction').split(',');
-
-                console.log(parseInt(directions[1]))
-
                 sketchModel.set('animation', Animations.sketches[parseInt(directions[0])]);
                 var sketch = new Sketch(svg, sketchModel,  parseInt(directions[1]));
                 sketch.update(1, rect);
@@ -110,6 +107,7 @@ define(
                         scrollController.unbind();
                         if(!editor) editor = new Editor({rect:rect});
                         editor.on('navigate', _.bind(this._onStateChange, this));
+                        editor.on('created', _.bind(this._onNewCreatureCreated, this));
                         editor.resize(rect)
                         editor.show();
                         break;
@@ -120,6 +118,12 @@ define(
                         scrollController.bind();
                         break;
                 }
+            },
+
+
+            _onNewCreatureCreated : function(sketchModel) {
+                sketcheCollection.add(sketchModel);
+                this._onStateChange('main');
             },
 
             _render : function() {
