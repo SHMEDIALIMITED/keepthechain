@@ -22,7 +22,7 @@ define([], function() {
                     },
                     { // inverse
                         pos: -1,
-                        scaleX: -1,
+                        scaleX: 1,
                         scaleY: 1,
                         rotation : '0deg'
                     }

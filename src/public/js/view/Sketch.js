@@ -9,11 +9,15 @@ define(
 
     function() {
 
-        var Sketch = function(parent, model) {
+        var Sketch = function(parent, model, dir) {
 
 
             this.animation = model.get('animation').frames;
-            this.direction = model.get('animation').directions[Math.round(Math.random())];
+            this.direction = model.get('animation').directions[dir];
+
+
+            console.log(this.direction, dir)
+
             this.parent = parent;
             this.closed = model.get('closed');
             this.opened = model.get('open');

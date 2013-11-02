@@ -20408,9 +20408,13 @@ define([
     var history;
     var historyIndex;
 
+    var origin;
+
     var canvas;
     var container;
     var center;
+
+
 
     var tool;
 
@@ -20468,6 +20472,9 @@ define([
                 fill: '#f00'
             });
 
+
+            origin = {x:center.left, y :center.top };
+
             console.log(center);
 
             canvas.add(center);
@@ -20517,7 +20524,7 @@ define([
 
         _objectModified : function(e) {
 
-            console.log('MOD', e);
+
 
             var newHistory = history.slice(0, historyIndex);
             history.length = 0;
@@ -20729,7 +20736,6 @@ define([
             while( --i > -1 ){
                 obj = objects[i];
                 obj.hasControls = obj.hasBorders = false;
-                console.log('HIDE')
             }
 
             canvas.renderAll();
@@ -20773,15 +20779,14 @@ define([
         },
 
         _export : function() {
-            var objects = canvas.getObjects()
+            var objects = canvas.getObjects();
             var i = objects.length;
             var obj;
 
-            var origin = {x:center.left, y :center.top };
+
 
             while(--i > -1) {
                 obj = objects[i];
-                console.log('HERE1', obj.left);
                 obj.left -= origin.x;
                 obj.top -= origin.y;
             }
@@ -20802,11 +20807,43 @@ define([
             return svg.find('g').markup();
         },
 
+        _detectDirection : function() {
+
+            var objects = canvas.getObjects()
+
+            var i = objects.length;
+            var obj;
+
+            var x = 0;
+            var y = 0;
+
+            while(--i > -1) {
+                obj = objects[i];
+
+                x += (obj.left - origin.x);
+                y += (obj.top - origin.y);
+            }
+
+            console.log(x,y)
+
+            if(x < 0 && x < y ){
+                return '0,1';
+            }else if(x > 0 && x > y) {
+                return '0,0';
+            }else if(y < 0 && y < x) {
+                return '1,0';
+            }else if(y > 0 && y < x) {
+                return '1,1';
+            }
+        },
+
         _save : function() {
 
             if(!this.model) {
+
                 this.model = new SketchModel();
-                this.model.set('open', this._export())
+                this.model.set('open', this._export());
+                this.model.set('direction', this._detectDirection());
                 popup.show();
                 canvas.setBackgroundImage(canvas.toDataURL(), function() {
 

@@ -91,8 +91,12 @@ define(
             },
 
             _sketchesAdded : function(sketchModel) {
-                sketchModel.set('animation', Animations.sketches[Math.round(Math.random())]);
-                var sketch = new Sketch(svg, sketchModel);
+                var directions = sketchModel.get('direction').split(',');
+
+                console.log(parseInt(directions[1]))
+
+                sketchModel.set('animation', Animations.sketches[parseInt(directions[0])]);
+                var sketch = new Sketch(svg, sketchModel,  parseInt(directions[1]));
                 sketch.update(1, rect);
                 sketch.prev = sketchViews[sketchViews.length - 1];
                 sketchViews.push(sketch);
