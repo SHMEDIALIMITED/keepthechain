@@ -114,7 +114,6 @@ define(
 
                     case 'main' :
                         if(editor) editor.hide();
-                        pos = 0;
                         scrollController.bind();
                         break;
                 }
