@@ -33,7 +33,7 @@ define(
 
         var pos = 0.0;
         var currentIndex = -1;
-        var current;
+        var current, next;
 
         var sketcheCollection;
         var sketchViews;
@@ -56,7 +56,7 @@ define(
                 rect = {};
                 sketchViews = [];
 
-                sketchViews.push(new Title({animation:Animations.title}));
+                //sketchViews.push(new Title({animation:Animations.title}));
 
                 sketcheCollection = new SketchCollection();
                 sketcheCollection.on('add', _.bind(this._sketchesAdded, this));
@@ -70,7 +70,7 @@ define(
 
                 navigation = new Navigation();
                 navigation.on('navigate', _.bind(this._onStateChange, this));
-
+                navigation.show();
 
 
 
@@ -141,10 +141,10 @@ define(
                 if(pos > 100) {
                     navigation.show();
                 } else {
-                    navigation.hide();
+                   // navigation.hide();
                 }
 
-                var index = ~~(pos / 960);
+                var index = ~~(pos / 480);
 
 
 
@@ -157,33 +157,39 @@ define(
                 } else {
 
                     if(currentIndex < index) {
+                        console.log(index)
                         currentIndex = index;
-                        current = sketchViews[currentIndex];
-                        current.append();
+                        current = next;
+                        if(current) current.close();
+                        next = sketchViews[currentIndex];
+                        next.append();
                         this._resize();
                     } else if(currentIndex > index) {
-                        if(current) current.remove();
-                        currentIndex = index;
-                        current = sketchViews[currentIndex];
-                        current.append();
-                        this._resize();
+//                        if(current) current.remove();
+//                        currentIndex = index;
+//                        current = sketchViews[currentIndex];
+//                        current.append();
+//                        this._resize();
                     }
 
                     // get animation frame index
-                    var frameIndex = pos - currentIndex * 960;
+                    var frameIndex = pos - currentIndex * 480;
 
-                    // control mouth
-                    if(current && frameIndex > 480) {
-                        current.close();
-                    } else if(current && frameIndex < 480) {
-                        current.open();
-                    }
+//                    // control mouth
+//                    if(current && frameIndex > 480) {
+//                        current.close();
+//                    } else if(current && frameIndex < 480) {
+//                        current.open();
+//                    }
 
 
                     // update sketch position
 
                     if(current) {
-                        current.update(frameIndex, rect);
+                        current.update(frameIndex+480, rect);
+                    }
+                    if(next) {
+                        next.update(frameIndex, rect);
                     }
                 }
 
@@ -202,6 +208,7 @@ define(
                 rect.x = w.width() >> 1;
                 rect.y = w.height() >> 1;
                 if(current) current.align(rect);
+                if(next) next.align(rect);
 
                 if(editor) editor.resize(rect)
             }
