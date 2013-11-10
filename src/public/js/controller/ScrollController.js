@@ -18,7 +18,7 @@ function() {
 
         _hammerDrag : function(e) {
 
-            this._processDelta(e.gesture.deltaY >> 2);
+            this._processDelta(e.gesture.deltaY);
         },
 
         _mouseWheel : function(e) {

@@ -33,7 +33,7 @@ define(
 
         var pos = 0.0;
         var currentIndex = -1;
-        var current, next;
+        var current, next, prev;
 
         var sketcheCollection;
         var sketchViews;
@@ -56,7 +56,7 @@ define(
                 rect = {};
                 sketchViews = [];
 
-                //sketchViews.push(new Title({animation:Animations.title}));
+                sketchViews.push(new Title({animation:Animations.title}));
 
                 sketcheCollection = new SketchCollection();
                 sketcheCollection.on('add', _.bind(this._sketchesAdded, this));
@@ -91,9 +91,9 @@ define(
             },
 
             _sketchesAdded : function(sketchModel) {
-                var directions = sketchModel.get('direction').split(',');
+                //var directions = sketchModel.get('direction').split(',');
                 sketchModel.set('animation', Animations.sketches[0]);
-                var sketch = new Sketch(svg, sketchModel,  parseInt(directions[1]));
+                var sketch = new Sketch(svg, sketchModel,  null);
                 sketch.update(1, rect);
                 sketch.prev = sketchViews[sketchViews.length - 1];
                 sketchViews.push(sketch);
@@ -135,7 +135,7 @@ define(
 
 
                 pos -= ~~(scrollController.delta);
-                pos = Math.min(Math.max(pos, 1),sketchViews.length * 960 );
+                pos = Math.min(Math.max(pos, 1),sketchViews.length * 480 );
 
 
                 if(pos > 100) {
@@ -157,7 +157,7 @@ define(
                 } else {
 
                     if(currentIndex < index) {
-                        console.log(index)
+
                         currentIndex = index;
                         current = next;
                         if(current) current.close();
@@ -165,11 +165,15 @@ define(
                         next.append();
                         this._resize();
                     } else if(currentIndex > index) {
-//                        if(current) current.remove();
-//                        currentIndex = index;
-//                        current = sketchViews[currentIndex];
-//                        current.append();
-//                        this._resize();
+
+                        if(current) current.open();
+                        currentIndex = index;
+                        if(next) next.remove();
+                        next = current;
+
+                        current  = sketchViews[currentIndex-1];
+
+                        this._resize();
                     }
 
                     // get animation frame index

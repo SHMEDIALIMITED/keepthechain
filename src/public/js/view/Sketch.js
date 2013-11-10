@@ -52,7 +52,7 @@ define(
 
                 var transform = ''//'translate3d(' + (x * this.direction.pos) + 'px, ' + (y * this.direction.pos)+ 'px, 0px) ';
                 transform += 'scale3d(' + (frame.scale * this.direction.scaleX) + ', ' + (frame.scale * this.direction.scaleY) + ', 1) ';
-                transform += 'rotate(' + this.direction.rotation + ')';
+                //transform += 'rotate(' + this.direction.rotation + ')';
 
                 this.graphic.css('-webkit-transform', transform);
             },
