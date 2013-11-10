@@ -92,7 +92,7 @@ define(
 
             _sketchesAdded : function(sketchModel) {
                 var directions = sketchModel.get('direction').split(',');
-                sketchModel.set('animation', Animations.sketches[parseInt(directions[0])]);
+                sketchModel.set('animation', Animations.sketches[0]);
                 var sketch = new Sketch(svg, sketchModel,  parseInt(directions[1]));
                 sketch.update(1, rect);
                 sketch.prev = sketchViews[sketchViews.length - 1];

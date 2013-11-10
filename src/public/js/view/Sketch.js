@@ -13,7 +13,7 @@ define(
 
 
             this.animation = model.get('animation').frames;
-            this.direction = model.get('animation').directions[dir];
+            this.direction = model.get('animation').directions[0];
 
 
 
